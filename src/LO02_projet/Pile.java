@@ -59,9 +59,9 @@ public class Pile {
 		System.out.println(croyant10);
 		tasDeCroyants.add(croyant10);
 		
-		//Creation de l'Intégriste Croyant
+		//Creation de l'Integriste Croyant
 		
-		Croyant croyant11 = new Croyant("Impose le sacrifice d'un Guide Spirituel d'un autre joueur, qui choisit la carte. La capacité spéciale du sacrifice est jouée.", "Intégristes", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.chaos, 1);
+		Croyant croyant11 = new Croyant("Impose le sacrifice d'un Guide Spirituel d'un autre joueur, qui choisit la carte. La capacité spéciale du sacrifice est jouée.", "Integristes", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.chaos, 1);
 		System.out.println(croyant11);
 		tasDeCroyants.add(croyant11);
 		

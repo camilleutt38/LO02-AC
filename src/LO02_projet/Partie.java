@@ -1,5 +1,7 @@
 package LO02_projet;
 
+import java.util.ArrayList;
+
 public class Partie {
 	
 	public Pile cartes;
@@ -23,6 +25,9 @@ public class Partie {
 		Partie p = new Partie();
 		System.out.println(p);
 		System.out.println(p.cartes.tirerCarteDessus());
+
+		
+
 		
 	}
 
