@@ -101,11 +101,11 @@ public class Pile {
 		
 		// Creation des Alchimistes Croyants
 		
-		Croyant croyant19 = new Croyant("Empeche une Divinité possédant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.symbole, 2);
+		Croyant croyant19 = new Croyant("Empeche une Divinitï¿½ possï¿½dant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.symbole, 2);
 		System.out.println(croyant19);
 		tasDeCroyants.add(croyant19);
 		
-		Croyant croyant20 = new Croyant("Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu. ", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.mystique, 2);
+		Croyant croyant20 = new Croyant("Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu. ", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.mystique, 2);
 		System.out.println(croyant20);
 		tasDeCroyants.add(croyant20);
 		
@@ -115,11 +115,11 @@ public class Pile {
 
 		// Creation des Vampires Croyants
 		
-		Croyant croyant22 = new Croyant("Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifié. La capacité spéciale du sacrifice est jouée", "Vampires", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.symbole, 1);
+		Croyant croyant22 = new Croyant("Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifiï¿½. La capacitï¿½ spï¿½ciale du sacrifice est jouï¿½e", "Vampires", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.symbole, 1);
 		System.out.println(croyant22);
 		tasDeCroyants.add(croyant22);
 		
-		Croyant croyant23 = new Croyant("Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifié. La capacité spéciale du sacrifice est jouée", "Vampires", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.chaos, Dogmes.mystique, 1);
+		Croyant croyant23 = new Croyant("Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifiï¿½. La capacitï¿½ spï¿½ciale du sacrifice est jouï¿½e", "Vampires", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.chaos, Dogmes.mystique, 1);
 		System.out.println(croyant23);
 		tasDeCroyants.add(croyant23);
 		
@@ -179,19 +179,19 @@ public class Pile {
 		
 		// Creation du Revenant Croyant
 		
-		Croyant croyant35 = new Croyant("Lancez le dé de Cosmgonie. Le tour se fini normalement, mais sous cette nouvelle influence.", "Revenant", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, Dogmes.nature, 1);
+		Croyant croyant35 = new Croyant("Lancez le dï¿½ de Cosmgonie. Le tour se fini normalement, mais sous cette nouvelle influence.", "Revenant", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, Dogmes.nature, 1);
 		System.out.println(croyant35);
 		tasDeCroyants.add(croyant35);
 		
 		// Creation des Revolutionnaires Croyants
 		
-		Croyant croyant36 = new Croyant("Imposez le sacrifice d'une carte de Croyants à autant de Divinites que vous le voulez. Chaque Divinite choisir la carte a sacrifier. Les capacites speciales sont jouees.", "Revolutionnaires", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, Dogmes.symbole, 2);
+		Croyant croyant36 = new Croyant("Imposez le sacrifice d'une carte de Croyants ï¿½ autant de Divinites que vous le voulez. Chaque Divinite choisir la carte a sacrifier. Les capacites speciales sont jouees.", "Revolutionnaires", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, Dogmes.symbole, 2);
 		System.out.println(croyant36);
 		tasDeCroyants.add(croyant36);
 		
 		// Creation des Nihilistes Croyants
 		
-		Croyant croyant37 = new Croyant("Jusqu'à la fin du tour, plus aucune Divinite ne recoit de points d'Action", "Nihillistes", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, Dogmes.mystique, 4);
+		Croyant croyant37 = new Croyant("Jusqu'ï¿½ la fin du tour, plus aucune Divinite ne recoit de points d'Action", "Nihillistes", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, Dogmes.mystique, 4);
 		System.out.println(croyant37);
 		tasDeCroyants.add(croyant37);
 		
@@ -303,6 +303,9 @@ public class Pile {
 		return " " + tasDeCroyants + " ";
 	}
 	
+	public boolean estVide(){
+		return tasDeCroyants.isEmpty();
+	}
 	
 
 }
