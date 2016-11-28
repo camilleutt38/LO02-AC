@@ -1,7 +1,7 @@
 package LO02_projet;
 public enum EtatCarte {
 	pioche ("pioche"),
-	défausse ("défausse"), 
+	defausse ("defausse"), 
 	enMain ("En main du joueur");
 	
 	private String etatCarte = "";
