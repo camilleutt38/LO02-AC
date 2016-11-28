@@ -1,22 +1,20 @@
 package LO02_projet;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Joueur {
 
-	
-	private int num;
-	private int nbPrieres;
-	public LinkedList<Croyant> main ;
-	private String nom;
+	private int nbPrieres =0;
+	public ArrayList<Action> main ;
+	protected String nom;
 	
 	public Joueur(String nom){
 		this.nom = nom;
-		main = new LinkedList<Croyant>();
+		main = new ArrayList<Action>();
 	}
 	
-	public void prendreCroyant(Croyant croyant){
-		main.add(croyant);
+	public void prendreCarte(Action action){
+		main.add(action);
 	}
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -34,9 +32,6 @@ public class Joueur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-	
-	
 
 
 }

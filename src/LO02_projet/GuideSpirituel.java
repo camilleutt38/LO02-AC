@@ -15,5 +15,9 @@ public class GuideSpirituel extends Action {
 		
 	}
 	
+	public String toString() {
+		return "Guide spirituel nom : " + nom + "\n";
+	}
+	
 
 }
