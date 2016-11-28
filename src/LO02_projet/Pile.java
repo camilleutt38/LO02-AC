@@ -7,12 +7,12 @@ import java.util.LinkedList;
 public class Pile {
 	
 	public final static int nbDeCartes = 37 ;
-	private LinkedList<Croyant> tasDeCroyants;
+	private LinkedList<Action> tasDeCroyants;
 	
 	public Pile(){
 		
 		//Creation des Croyants
-		tasDeCroyants= new LinkedList<Croyant>();
+		tasDeCroyants= new LinkedList<Action>();
 		
 		// Creation des Moines
 		Croyant croyant1 = new Croyant("Donne un point d'action d'origine Jour", "Moines", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.mystique, 2 );
@@ -194,13 +194,107 @@ public class Pile {
 		Croyant croyant37 = new Croyant("Jusqu'à la fin du tour, plus aucune Divinite ne recoit de points d'Action", "Nihillistes", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, Dogmes.mystique, 4);
 		System.out.println(croyant37);
 		tasDeCroyants.add(croyant37);
+		
+		
+		// Creation des guides spirituels
+				
+		// les Martyrs
+		GuideSpirituel guide1 = new GuideSpirituel("Equivalent a la pose d'une carte Apocalypse", "Martyr", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, 2, 0);
+		System.out.println(guide1);
+		tasDeCroyants.add(guide1);
+		
+		GuideSpirituel guide2 = new GuideSpirituel("Equivalent a la pose d'une carte Apocalypse", "Martyr", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, 2, 0);
+		System.out.println(guide2);
+		tasDeCroyants.add(guide2);
+		
+		GuideSpirituel guide3 = new GuideSpirituel("Equivalent a la pose d'une carte Apocalypse", "Martyr", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, 2, 0);
+		System.out.println(guide3);
+		tasDeCroyants.add(guide3);
+		
+		// les Clercs
+		GuideSpirituel guide4 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, 2, 0);
+		System.out.println(guide4);
+		tasDeCroyants.add(guide4);
+		
+		GuideSpirituel guide5 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.symbole, 2, 0);
+		System.out.println(guide5);
+		tasDeCroyants.add(guide5);
+		
+		GuideSpirituel guide6 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, 2, 0);
+		System.out.println(guide6);
+		tasDeCroyants.add(guide6);
+		
+		GuideSpirituel guide7 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, 2, 0);
+		System.out.println(guide7);
+		tasDeCroyants.add(guide7);
+		
+		GuideSpirituel guide8 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.symbole, 2, 0);
+		System.out.println(guide8);
+		tasDeCroyants.add(guide8);
+		
+		GuideSpirituel guide9 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, 2, 0);
+		System.out.println(guide9);
+		tasDeCroyants.add(guide9);
+		
+		GuideSpirituel guide10 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.mystique, 2, 0);
+		System.out.println(guide10);
+		tasDeCroyants.add(guide10);
+		
+		GuideSpirituel guide11 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.humain, 2, 0);
+		System.out.println(guide11);
+		tasDeCroyants.add(guide11);
+		
+		// le Shaman
+		GuideSpirituel guide12 = new GuideSpirituel("Sacrifie tous les croyants d'origine Neant d'une Divinite ayant le Dogme Humain. Les capacites speciales sont jouees normalement.", "Shaman", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.mystique, 3, 0);
+		System.out.println(guide12);
+		tasDeCroyants.add(guide12);
+		
+		// l'Anarchiste
+		GuideSpirituel guide13 = new GuideSpirituel("Sacrifie un Guide Spirituel, si lui ou sa Divinite ne croit pas au Dogme Chaos. Les capacites speciales sont jouees normalement", "Anachiste", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, 3, 0);
+		System.out.println(guide13);
+		tasDeCroyants.add(guide13);
+		
+		// Le paladin
+		GuideSpirituel guide14 = new GuideSpirituel("Tous les Croyants d'Origine Nuit ou Neant et ayant le Dogme Nature, actuellement sur la table sont defauses. Les capacites speciales ne sont pas jouees.", "Paladin", Origine.jour, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, 3, 0);
+		System.out.println(guide14);
+		tasDeCroyants.add(guide14);
+		
+		// l'Ascete
+		GuideSpirituel guide15 = new GuideSpirituel("Sacrifie 2 cartes Croyants d'une Divinite ayant le Dogme Humain ou Symboles. Les capacites speciales sont jouees normalement.", "Ascete", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, 1, 0);
+		System.out.println(guide15);
+		tasDeCroyants.add(guide15);
+		
+		// Le Devin
+		GuideSpirituel guide16 = new GuideSpirituel("Oblige une Divinite ayant le Dogme Nature ou Mystique a sacrifier l'un de ses Guide Spirituel.", "Devin", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, 1, 0);
+		System.out.println(guide16);
+		tasDeCroyants.add(guide16);
+		
+		// L'exorciste
+		GuideSpirituel guide17 = new GuideSpirituel("Une Divinite d'Origine Nuit ou ayant les Dogmes Mystique et Chaos reprend dans sa main l'un de ses Guides Spirituels. Les Croyants qui y etaient attaches sont defausses.", "Exorciste", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.mystique, 1, 0);
+		System.out.println(guide17);
+		tasDeCroyants.add(guide17);
+		
+		// Le sorcier
+		GuideSpirituel guide18 = new GuideSpirituel("Echangez l'un de vos Guides Spirituels avec un d'une autre divinite. Vous choisissez les deux guides en question. Les croyants restent rattaches aux meme cartes.", "Sorcier", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.symbole, 3, 0);
+		System.out.println(guide18);
+		tasDeCroyants.add(guide18);
+		
+		// le tyran
+		GuideSpirituel guide19 = new GuideSpirituel("Defausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.", "Tyran", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, 3, 0);
+		System.out.println(guide19);
+		tasDeCroyants.add(guide19);
+		
+		// le Messie
+		GuideSpirituel guide20 = new GuideSpirituel("Le joueur pose le dé de Cosmogonie sur la face qu'il desire et commence un nouveau tour de jeu.", "Messie", Origine.jour, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, 3, 0);
+		System.out.println(guide20);
+		tasDeCroyants.add(guide20);
 		}
 	
 	public void melanger(){
 		Collections.shuffle(tasDeCroyants);
 	}
 	
-	public Croyant tirerCarteDessus(){
+	public Action tirerCarteDessus(){
 		return tasDeCroyants.pop();
 	}
 
