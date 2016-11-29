@@ -46,7 +46,13 @@ public class PileDivinites {
 	}
 	
 	public Divinite tirerCarteDessus(){
-		return tasDivinite.removeFirst();
+		if (estVide() == false){
+		return tasDivinite.removeFirst();}
+		else {return null;}
+	}
+	
+	public boolean estVide() {
+		return tasDivinite.isEmpty();
 	}
 
 }

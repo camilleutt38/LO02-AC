@@ -316,7 +316,9 @@ public class Pile {
 	
 	public Action tirerCarteDessus(){
 		if (estVide() == false){
-		return tasDeCartes.removeFirst();}
+		Action carte = tasDeCartes.removeFirst();
+		carte.etat = EtatCarte.enMain;
+		return carte;}
 		else {return null;}
 	}
 

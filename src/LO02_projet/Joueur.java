@@ -18,6 +18,7 @@ public class Joueur {
 	
 	public void prendreCarte(Action action){
 		main.add(action);
+		
 	}
 
 	public String getNom() {
