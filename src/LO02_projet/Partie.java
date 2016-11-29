@@ -36,7 +36,17 @@ public class Partie {
 		}
 	}
 
-	public void distribuerPtsAction(int valeurDe) {
+	public void lancerDe() {
+		int valeurDe=0;
+
+		valeurDe= (int)(1+ 3*Math.random());
+		if (valeurDe == 0){
+			System.out.println("Le dé a dit Jour !");
+		} else if(valeurDe == 1) {
+			System.out.println("Le dé a dit Nuit !");
+		} else {
+			System.out.println("Le dé a dit Neant !");
+		}
 		if (valeurDe == 0) {
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
@@ -89,7 +99,7 @@ public class Partie {
 		System.out.println(chris);
 
 		System.out.println(chaton);
-		de.lancerDe();
+		p.distribuerPtsAction();
 
 	}
 
