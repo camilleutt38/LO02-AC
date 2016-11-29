@@ -18,7 +18,8 @@ public class Croyant extends Action {
 	public String toString() {
 		return "Croyant nom : " + nom + "\n";
 	}
-
+	
+	
 	
 	
 
