@@ -52,10 +52,14 @@ public class Partie {
 		p.ajouterJoueur(chris);
 
 		p.distribuerCarte();
-
+		
 		System.out.println(chaton);
 		System.out.println(lucie);
 		System.out.println(chris);
+		
+		
+		chaton.PtsAction(0, 1, 0);
+		System.out.println(chaton);
 
 
 	}
