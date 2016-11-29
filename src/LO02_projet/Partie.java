@@ -8,15 +8,14 @@ public class Partie {
 	private ArrayList<Joueur> joueurs;
 	public Pile cartes;
 	public PileDivinites pileDivi;
-	
-	public Partie(){
+
+	public Partie() {
 		joueurs = new ArrayList<Joueur>();
 		cartes = new Pile();
 		cartes.melanger();
 		pileDivi = new PileDivinites();
 		pileDivi.melanger();
-		}
-
+	}
 
 	@Override
 	public String toString() {
@@ -27,7 +26,7 @@ public class Partie {
 		// if (partieEnCours == false) {
 		joueurs.add(joueur);
 	}
-	 // }
+	// }
 
 	public void distribuerCarte() {
 		while (cartes.estVide() == false) {
@@ -38,7 +37,7 @@ public class Partie {
 			}
 		}
 	}
-	
+
 	public void distribuerDivinite() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -62,28 +61,28 @@ public class Partie {
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
-				// if divinité jour
-				j.PtsActionJour(2);
-				// else if divinite aubde
-				// j.PtsActionJour(1);
-			}
+				if (j.divinite.origine == Origine.jour){
+					j.PtsActionJour(2);}
+				else if (j.divinite.origine == Origine.aube){
+					j.PtsActionJour(1);}
+		}
 		} else if (valeurDe == 1) {
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
-				// if divinité nuit
-				j.PtsActionNuit(2);
-				// else if divinite crepuscule
-				// j.PtsActionNuit(1);
+				if (j.divinite.origine == Origine.nuit){
+					j.PtsActionNuit(2);}
+				else if (j.divinite.origine == Origine.crepuscule){
+					j.PtsActionNuit(1);}
 			}
 		} else {
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
-				// if divinité aube
-				j.PtsActionNeant(1);
-				// else if divinite crepuscule
-				// j.PtsActionNeant(1);
+				if (j.divinite.origine == Origine.aube){
+					j.PtsActionNeant(1);}
+				else if (j.divinite.origine == Origine.crepuscule){
+					j.PtsActionNeant(1);}
 			}
 		}
 
@@ -109,10 +108,12 @@ public class Partie {
 		System.out.println(chaton);
 		System.out.println(lucie);
 		System.out.println(chris);
-		
+
+		p.lancerDe();
 		
 		System.out.println(chaton);
-		p.lancerDe();
+		System.out.println(lucie);
+		System.out.println(chris);
 
 	}
 

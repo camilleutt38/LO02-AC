@@ -36,7 +36,7 @@ public class Joueur {
 
 	@Override
 	public String toString() {
-		return "Joueur [nom : " + nom + " Nombre de Prieres : " + nbPrieres + ", main : " + main + "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant" + PtsAction[2] + "] Divnite : " +divinite;
+		return "Joueur [nom : " + nom + " Nombre de Prieres : " + nbPrieres + ", main : " + main + "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant : " + PtsAction[2] + "] Divnite : " +divinite;
 	}
 	
 	public void PtsActionJour(int i){
