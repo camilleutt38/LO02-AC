@@ -81,7 +81,6 @@ public class Partie {
 	public static void main(String[] args) {
 
 		Partie p = new Partie();
-		DeCosmogonie de = new DeCosmogonie();
 		System.out.println(p);
 
 		Joueur chaton = new Joueur("Chaton");
@@ -99,7 +98,7 @@ public class Partie {
 		System.out.println(chris);
 
 		System.out.println(chaton);
-		p.distribuerPtsAction();
+		p.lancerDe();
 
 	}
 
