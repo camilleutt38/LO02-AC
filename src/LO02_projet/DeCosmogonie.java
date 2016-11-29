@@ -1,18 +1,22 @@
 package LO02_projet;
 
-import java.util.LinkedList;
 
 public class DeCosmogonie {
 	
-	private LinkedList<Integer> de;
+	int valeurDe;
 	
-	public DeCosmogonie() {
-		for (int i = 0; i<= 2; i++){
-			de.add(i);
+	//0 = jour 1= nuit 2 = neant
+	public void lancerDe(){
+		valeurDe=0;
+
+		valeurDe= (int)(1+ 3*Math.random());
+		if (valeurDe == 0){
+			System.out.println("Le dé a dit Jour !");
+		} else if(valeurDe == 1) {
+			System.out.println("Le dé a dit Nuit !");
+		} else {
+			System.out.println("le dé a dit Neant !");
 		}
-	}
-	
-	public void AjoutPtsAction(){
 		
 	}
 	

@@ -3,7 +3,6 @@ package LO02_projet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 public class Partie {
 
 	private ArrayList<Joueur> joueurs;
@@ -37,11 +36,43 @@ public class Partie {
 		}
 	}
 
+	public void distribuerPtsAction(int valeurDe) {
+		if (valeurDe == 0) {
+			Iterator<Joueur> it = joueurs.iterator();
+			while (it.hasNext()) {
+				Joueur j = (Joueur) it.next();
+				// if divinité jour
+				j.PtsActionJour(2);
+				// else if divinite aubde
+				// j.PtsActionJour(1);
+			}
+		} else if (valeurDe == 1) {
+			Iterator<Joueur> it = joueurs.iterator();
+			while (it.hasNext()) {
+				Joueur j = (Joueur) it.next();
+				// if divinité nuit
+				j.PtsActionNuit(2);
+				// else if divinite crepuscule
+				// j.PtsActionNuit(1);
+			}
+		} else {
+			Iterator<Joueur> it = joueurs.iterator();
+			while (it.hasNext()) {
+				Joueur j = (Joueur) it.next();
+				// if divinité aube
+				j.PtsActionNeant(1);
+				// else if divinite crepuscule
+				// j.PtsActionNeant(1);
+			}
+		}
+
+	}
+
 	public static void main(String[] args) {
 
 		Partie p = new Partie();
+		DeCosmogonie de = new DeCosmogonie();
 		System.out.println(p);
-		
 
 		Joueur chaton = new Joueur("Chaton");
 		Joueur lucie = new Joueur("Lucie");
@@ -52,15 +83,13 @@ public class Partie {
 		p.ajouterJoueur(chris);
 
 		p.distribuerCarte();
-		
+
 		System.out.println(chaton);
 		System.out.println(lucie);
 		System.out.println(chris);
-		
-		
-		chaton.PtsAction(0, 1, 0);
-		System.out.println(chaton);
 
+		System.out.println(chaton);
+		de.lancerDe();
 
 	}
 

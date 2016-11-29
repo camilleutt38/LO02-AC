@@ -34,9 +34,15 @@ public class Joueur {
 		return "Joueur [nom : " + nom + " Nombre de Prieres : " + nbPrieres + ", main : " + main + "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant" + PtsAction[2] + "]";
 	}
 	
-	public void PtsAction(int i, int j, int k){
+	public void PtsActionJour(int i){
 		this.PtsAction[0] = i;
+		
+	}
+	public void PtsActionNuit(int j){
 		this.PtsAction[1] = j;
+		
+	}
+	public void PtsActionNeant(int k){
 		this.PtsAction[2] = k;
 		
 	}
