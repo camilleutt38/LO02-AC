@@ -45,7 +45,9 @@ public class Partie {
 			j.piocherDivinite(pileDivi.tirerCarteDessus());
 		}
 	}
-
+	
+	//Fonction qui lance le dé et qui distribue les points d'actions aux Joueurs
+	
 	public void lancerDe() {
 		int valeurDe=0;
 
