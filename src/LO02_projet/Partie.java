@@ -1,13 +1,13 @@
 package LO02_projet;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class Partie {
 
 	private ArrayList<Joueur> joueurs;
 	public Pile cartes;
 	public PileDivinites pileDivi;
+	public Milieu milieu ;
 
 	public Partie() {
 		joueurs = new ArrayList<Joueur>();
@@ -15,6 +15,7 @@ public class Partie {
 		cartes.melanger();
 		pileDivi = new PileDivinites();
 		pileDivi.melanger();
+		milieu = new Milieu() ;
 	}
 
 	@Override
@@ -53,11 +54,11 @@ public class Partie {
 
 		valeurDe= (int)(1+ 3*Math.random());
 		if (valeurDe == 0){
-			System.out.println("Le dé a dit Jour !");
+			System.out.println("Le de dit Jour !");
 		} else if(valeurDe == 1) {
-			System.out.println("Le dé a dit Nuit !");
+			System.out.println("Le de a dit Nuit !");
 		} else {
-			System.out.println("Le dé a dit Neant !");
+			System.out.println("Le de a dit Neant !");
 		}
 		if (valeurDe == 0) {
 			Iterator<Joueur> it = joueurs.iterator();
@@ -107,15 +108,26 @@ public class Partie {
 
 		p.distribuerDivinite();
 
-		System.out.println(chaton);
+		// System.out.println(chaton);
 		System.out.println(lucie);
-		System.out.println(chris);
+		// System.out.println(chris);
 
 		p.lancerDe();
 		
-		System.out.println(chaton);
+		// System.out.println(chaton);
 		System.out.println(lucie);
-		System.out.println(chris);
+		// System.out.println(chris);
+		
+		// TEST POUR POSER DES CROYANTS AU MILIEU
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Lulu tu veux poser lequel de tes croyants au milieu ? (rentre l'index dans ta main)");
+		int idCroyant = sc.nextInt();
+		
+		
+		p.milieu.poserCroyant(lucie, idCroyant);
+		
+		// Contenu du mileu :
+		System.out.println(p.milieu.CroyantsMilieu);
 
 	}
 
