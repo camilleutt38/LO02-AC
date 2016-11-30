@@ -30,7 +30,7 @@ public class Partie {
 	// }
 
 	public void distribuerCarte() {
-		while (cartes.estVide() == false) {
+		for (int i = 0; i<= 6; i++) {
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
@@ -55,12 +55,6 @@ public class Partie {
 		valeurDe= (int)(1+ 3*Math.random());
 		if (valeurDe == 0){
 			System.out.println("Le de dit Jour !");
-		} else if(valeurDe == 1) {
-			System.out.println("Le de a dit Nuit !");
-		} else {
-			System.out.println("Le de a dit Neant !");
-		}
-		if (valeurDe == 0) {
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
@@ -68,8 +62,9 @@ public class Partie {
 					j.PtsActionJour(2);}
 				else if (j.divinite.origine == Origine.aube){
 					j.PtsActionJour(1);}
-		}
-		} else if (valeurDe == 1) {
+			}
+		} else if(valeurDe == 1) {
+			System.out.println("Le de a dit Nuit !");
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
@@ -79,6 +74,7 @@ public class Partie {
 					j.PtsActionNuit(1);}
 			}
 		} else {
+			System.out.println("Le de a dit Neant !");
 			Iterator<Joueur> it = joueurs.iterator();
 			while (it.hasNext()) {
 				Joueur j = (Joueur) it.next();
@@ -88,13 +84,12 @@ public class Partie {
 					j.PtsActionNeant(1);}
 			}
 		}
-
 	}
 
 	public static void main(String[] args) {
 
 		Partie p = new Partie();
-		System.out.println(p);
+		//System.out.println(p);
 
 		Joueur chaton = new Joueur("Chaton");
 		Joueur lucie = new Joueur("Lucie");
@@ -108,15 +103,15 @@ public class Partie {
 
 		p.distribuerDivinite();
 
-		// System.out.println(chaton);
+		System.out.println(chaton);
 		System.out.println(lucie);
-		// System.out.println(chris);
+		System.out.println(chris);
 
 		p.lancerDe();
 		
-		// System.out.println(chaton);
+		System.out.println(chaton);
 		System.out.println(lucie);
-		// System.out.println(chris);
+		System.out.println(chris);
 		
 		// TEST POUR POSER DES CROYANTS AU MILIEU
 		Scanner sc = new Scanner(System.in);
