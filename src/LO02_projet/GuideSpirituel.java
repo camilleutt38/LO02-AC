@@ -3,7 +3,7 @@ public class GuideSpirituel extends Action {
 	
 	protected int nbCroyantsMax;
 	protected int nbcroyantsRattaches;
-	protected Dogmes dogme1;
+	public Dogmes dogme1;
 	protected Dogmes dogme2;
 	
 	public GuideSpirituel(String capacite, String nom, Origine origine, EtatCarte etat, Dogmes dogme1, Dogmes dogme2, int nbCroyantsMax, int nbCroyantsRattaches) {
@@ -16,7 +16,7 @@ public class GuideSpirituel extends Action {
 	}
 	
 	public String toString() {
-		return "Guide Spirituel nom : " + nom + "\n";
+		return "Guide Spirituel nom : " + nom + " d'origine : " +origine+ "\n";
 
 	}
 	

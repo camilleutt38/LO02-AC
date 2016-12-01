@@ -2,7 +2,7 @@ package LO02_projet;
 public class Croyant extends Action {
 	
 	protected int nbPriere;
-	protected Dogmes dogme1;
+	public Dogmes dogme1;
 	protected Dogmes dogme2;
 	protected Dogmes dogme3;
 

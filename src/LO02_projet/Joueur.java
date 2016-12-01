@@ -10,10 +10,12 @@ public class Joueur {
 	protected String nom;
 	public Divinite divinite;
 	public int PtsAction[] = {0, 0, 0};
+	public ArrayList<Action> espaceJoueur ;
 	
 	public Joueur(String nom){
 		this.nom = nom;
 		main = new ArrayList<Action>();
+		espaceJoueur = new ArrayList<Action>();
 	}
 	
 	public void prendreCarte(Action action){
@@ -37,7 +39,7 @@ public class Joueur {
 
 	@Override
 	public String toString() {
-		return "Joueur [nom : " + nom + " Nombre de Prieres : " + nbPrieres + ", main : " + main + "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant : " + PtsAction[2] + "] Divnite : " +divinite;
+		return "Joueur [nom : " + nom + " Nombre de Prieres : " + nbPrieres + ", main : " + main + "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant : " + PtsAction[2] + "] Divnite : " +divinite+ "Espace Joueur :" +espaceJoueur+ "\n";
 	}
 	
 	public void PtsActionJour(int i){

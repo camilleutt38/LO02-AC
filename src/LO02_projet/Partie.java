@@ -91,11 +91,11 @@ public class Partie {
 		Partie p = new Partie();
 		//System.out.println(p);
 
-		Joueur chaton = new Joueur("Chaton");
+		Joueur camille = new Joueur("Camille");
 		Joueur lucie = new Joueur("Lucie");
 		Joueur chris = new Joueur("Chris");
 
-		p.ajouterJoueur(chaton);
+		p.ajouterJoueur(camille);
 		p.ajouterJoueur(lucie);
 		p.ajouterJoueur(chris);
 
@@ -103,28 +103,32 @@ public class Partie {
 
 		p.distribuerDivinite();
 
-		System.out.println(chaton);
-		System.out.println(lucie);
-		System.out.println(chris);
+		// System.out.println(camille);
+		// System.out.println(lucie);
+		// System.out.println(chris);
 
 		p.lancerDe();
+		p.lancerDe();
+		p.lancerDe();
 		
-		System.out.println(chaton);
+		System.out.println(camille);
 		System.out.println(lucie);
-		System.out.println(chris);
+		// System.out.println(chris);
 		
 		// TEST POUR POSER DES CROYANTS AU MILIEU
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Lulu tu veux poser lequel de tes croyants au milieu ? (rentre l'index dans ta main)");
-		int idCroyant = sc.nextInt();
 		
 		
-		p.milieu.poserCroyant(lucie, idCroyant);
+		p.milieu.poserCroyant(lucie);
 		
 		// Contenu du mileu :
 		System.out.println(p.milieu.CroyantsMilieu);
 		
-		System.out.println(lucie);
+		// TEST POUR RECUPERER LE CROYANT
+		p.milieu.recupererCroyant(camille);
+		
+		System.out.println(camille);
+		
+		
 
 	}
 
