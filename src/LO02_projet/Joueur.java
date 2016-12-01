@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Joueur {
 
 	
-	private int nbPrieres=0;
+	public int nbPrieres=0;
 	public ArrayList<Action> main ;
 	protected String nom;
 	public Divinite divinite;

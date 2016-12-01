@@ -89,6 +89,8 @@ public class Milieu {
 				j.PtsAction[0] = j.PtsAction[0] - 1;
 				j.espaceJoueur.add(guide);
 				j.espaceJoueur.add(croyantMilieu);
+				j.main.remove(idGuide);
+				j.nbPrieres=j.nbPrieres + croyantMilieu.nbPriere;
 			} else {
 				System.out.println("Pas assez de point d'action d'origine Jour...");
 			}
@@ -99,6 +101,8 @@ public class Milieu {
 				j.PtsAction[1] = j.PtsAction[0] - 1;
 				j.espaceJoueur.add(guide);
 				j.espaceJoueur.add(croyantMilieu);
+				j.main.remove(idGuide);
+				j.nbPrieres=j.nbPrieres + croyantMilieu.nbPriere;
 			} else {
 				System.out.println("Pas assez de point d'action d'origine Nuit...");
 			}
@@ -109,6 +113,8 @@ public class Milieu {
 				j.PtsAction[0] = j.PtsAction[2] - 1;
 				j.espaceJoueur.add(guide);
 				j.espaceJoueur.add(croyantMilieu);
+				j.main.remove(idGuide);
+				j.nbPrieres=j.nbPrieres + croyantMilieu.nbPriere;
 			} else {
 				System.out.println("Pas assez de point d'action d'origine Neant...");
 			}
