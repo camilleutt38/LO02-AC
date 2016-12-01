@@ -47,7 +47,7 @@ public class Partie {
 		}
 	}
 	
-	//Fonction qui lance le dé et qui distribue les points d'actions aux Joueurs
+	//Fonction qui lance le de et qui distribue les points d'actions aux Joueurs
 	
 	public void lancerDe() {
 		int valeurDe=0;
@@ -123,6 +123,8 @@ public class Partie {
 		
 		// Contenu du mileu :
 		System.out.println(p.milieu.CroyantsMilieu);
+		
+		System.out.println(lucie);
 
 	}
 

@@ -14,7 +14,7 @@ public class Milieu {
 	}
 
 	public void poserCroyant(Joueur j, int idCroyant) {
-
+		if (idCroyant>=0 && idCroyant<=6) {
 		Action c = j.main.get(idCroyant);
 
 		if (c.origine == Origine.jour) {
@@ -22,6 +22,7 @@ public class Milieu {
 				this.CroyantsMilieu.add(c);
 				this.nbCroyants = this.nbCroyants + 1;
 				j.PtsAction[0] = j.PtsAction[0] - 1;
+				j.main.remove(idCroyant);
 			} else {
 				System.out.println("Pas assez de point d'action d'origine Jour...");
 			}
@@ -30,6 +31,7 @@ public class Milieu {
 				this.CroyantsMilieu.add(c);
 				this.nbCroyants = this.nbCroyants + 1;
 				j.PtsAction[1] = j.PtsAction[1] - 1;
+				j.main.remove(idCroyant);
 			} else {
 				System.out.println("Pas assez de point d'action d'origine Nuit...");
 			}
@@ -38,11 +40,14 @@ public class Milieu {
 				this.CroyantsMilieu.add(c);
 				this.nbCroyants = this.nbCroyants + 1;
 				j.PtsAction[2] = j.PtsAction[2] - 1;
+				j.main.remove(idCroyant);
 			} else {
 				System.out.println("Pas assez de point d'action d'origine Neant...");
 			}
 		}
-
+		} else {
+			System.out.println("Index de carte non valable");
+		}
 	}
 	
 }
