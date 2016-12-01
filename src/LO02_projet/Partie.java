@@ -108,22 +108,19 @@ public class Partie {
 		// System.out.println(chris);
 
 		p.lancerDe();
-		p.lancerDe();
-		p.lancerDe();
+
 		
 		System.out.println(camille);
 		System.out.println(lucie);
 		// System.out.println(chris);
 		
-		// TEST POUR POSER DES CROYANTS AU MILIEU
-		
-		
+		// On fait poser un Croyant a Lucie (si elle peut)
 		p.milieu.poserCroyant(lucie);
 		
 		// Contenu du mileu :
-		System.out.println(p.milieu.CroyantsMilieu);
+		System.out.println("Contenu du milieu : " +p.milieu.CroyantsMilieu);
 		
-		// TEST POUR RECUPERER LE CROYANT
+		// Camille va essayer de voler le croyant du milieu
 		p.milieu.recupererCroyant(camille);
 		
 		System.out.println(camille);

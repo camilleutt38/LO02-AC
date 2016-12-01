@@ -12,14 +12,18 @@ public class Milieu {
 		nbCroyants = 0;
 	}
 
+	
 	public void poserCroyant(Joueur j) {
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrer l'index d'un Croyant dans votre main");
 		int idCroyant = sc.nextInt();
 		
+		try {
+			
 		if (idCroyant>=0 && idCroyant<=6) {
-		Action c = j.main.get(idCroyant);
+		Croyant c =(Croyant)j.main.get(idCroyant);
+		
 
 		if (c.origine == Origine.jour) {
 			if (j.PtsAction[0] > 0) {
@@ -52,6 +56,10 @@ public class Milieu {
 		} else {
 			System.out.println("Index de carte non valable");
 		}
+		
+	} catch (ClassCastException e) {
+		System.out.println("Vous n'avez pas selectionne un Croyant...");
+	}
 	}
 	
 	
@@ -60,15 +68,19 @@ public class Milieu {
 	public void recupererCroyant(Joueur j) {
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Entrer l'index d'un Croyant du milieu");
+		System.out.println("Entrer l'index d'un Croyant du milieu pour le recuperer");
 		int idCroyantMilieu = sc.nextInt();
 		System.out.println("Entrer l'index d'un Guide Spirituel de votre main");
 		int idGuide = sc.nextInt();
 		
+		try {
+		
 		if (idGuide>=0 && idGuide<=6 && idCroyantMilieu>=0 && idCroyantMilieu<=this.CroyantsMilieu.size()) {
 		
-		Action guide = j.main.get(idGuide);
-		Action croyantMilieu = this.CroyantsMilieu.get(idCroyantMilieu);
+		GuideSpirituel guide =(GuideSpirituel)j.main.get(idGuide);
+		Croyant croyantMilieu =(Croyant) this.CroyantsMilieu.get(idCroyantMilieu);
+		
+		if (guide.dogme1==croyantMilieu.dogme1 || guide.dogme1==croyantMilieu.dogme2 || guide.dogme1==croyantMilieu.dogme3 || guide.dogme2==croyantMilieu.dogme1 || guide.dogme2==croyantMilieu.dogme2 || guide.dogme2==croyantMilieu.dogme3 ) {
 		
 		if (guide.origine == Origine.jour) {
 			if (j.PtsAction[0] > 0) {
@@ -104,7 +116,13 @@ public class Milieu {
 		}  else {
 		System.out.println("Index de carte non valable");
 			}		
+		} else {
+			System.out.println("Le guide et le croyant n'ont aucun dogme en commun...");
+		}
+		} catch (ClassCastException e) {
+		System.out.println("Vous n'avez pas selectionne un Guide Spirituel...");
 	}
+}
 	
 	
 }

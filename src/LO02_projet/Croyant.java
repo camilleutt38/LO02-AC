@@ -16,7 +16,7 @@ public class Croyant extends Action {
 
 	@Override
 	public String toString() {
-		return "Croyant nom : " + nom + " d'origine : " +origine+  "\n";
+		return "Croyant nom : " + nom + ", d'origine : " +origine+ ", dogmes : " +dogme1+ ", " +dogme2+ ", " +dogme3+  "\n";
 	}
 	
 	

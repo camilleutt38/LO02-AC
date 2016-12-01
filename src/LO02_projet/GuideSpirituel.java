@@ -16,7 +16,7 @@ public class GuideSpirituel extends Action {
 	}
 	
 	public String toString() {
-		return "Guide Spirituel nom : " + nom + " d'origine : " +origine+ "\n";
+		return "Guide Spirituel nom : " + nom + ", d'origine : " +origine+ ", dogmes : " +dogme1+ ", " +dogme2+ "\n";
 
 	}
 	
