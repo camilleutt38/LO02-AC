@@ -305,9 +305,26 @@ public class Pile {
 		tasDeCartes.add(guide19);
 
 		// le Messie
-		GuideSpirituel guide20 = new GuideSpirituel("Le joueur pose le d� de Cosmogonie sur la face qu'il desire et commence un nouveau tour de jeu.", "Messie", Origine.jour, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, 3, 0);
+		GuideSpirituel guide20 = new GuideSpirituel("Le joueur pose le de de Cosmogonie sur la face qu'il desire et commence un nouveau tour de jeu.", "Messie", Origine.jour, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, 3, 0);
 		// System.out.println(guide20);
 		tasDeCartes.add(guide20);
+		
+		//APOCALYPSES
+		Apocalypse apocalypse1 = new Apocalypse("Boulversement divin", "Apocalypse", Origine.jour, EtatCarte.pioche);
+		tasDeCartes.add(apocalypse1);
+		
+		Apocalypse apocalypse2 = new Apocalypse("Boulversement divin", "Apocalypse", Origine.nuit, EtatCarte.pioche);
+		tasDeCartes.add(apocalypse2);
+		
+		Apocalypse apocalypse3 = new Apocalypse("Boulversement divin", "Apocalypse", Origine.neant, EtatCarte.pioche);
+		tasDeCartes.add(apocalypse3);
+		
+		Apocalypse apocalypse4 = new Apocalypse("Boulversement divin", "Apocalypse", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(apocalypse4);
+		
+		Apocalypse apocalypse5 = new Apocalypse("Boulversement divin", "Apocalypse", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(apocalypse5);
+		
 	}
 
 	public void melanger() {

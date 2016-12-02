@@ -8,8 +8,10 @@ public class Partie {
 	public Pile cartes;
 	public PileDivinites pileDivi;
 	public Milieu milieu ;
+	public boolean etatPartie;
 
 	public Partie() {
+		etatPartie = true;
 		joueurs = new ArrayList<Joueur>();
 		cartes = new Pile();
 		cartes.melanger();
