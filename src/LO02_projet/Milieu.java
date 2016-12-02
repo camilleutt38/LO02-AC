@@ -98,7 +98,7 @@ public class Milieu {
 			if (j.PtsAction[1] > 0) {
 				this.CroyantsMilieu.remove(idCroyantMilieu);
 				this.nbCroyants = this.nbCroyants - 1;
-				j.PtsAction[1] = j.PtsAction[0] - 1;
+				j.PtsAction[1] = j.PtsAction[1] - 1;
 				j.espaceJoueur.add(guide);
 				j.espaceJoueur.add(croyantMilieu);
 				j.main.remove(idGuide);
@@ -110,7 +110,7 @@ public class Milieu {
 			if (j.PtsAction[2] > 0) {
 				this.CroyantsMilieu.remove(idCroyantMilieu);
 				this.nbCroyants = this.nbCroyants - 1;
-				j.PtsAction[0] = j.PtsAction[2] - 1;
+				j.PtsAction[0] = j.PtsAction[0] - 1;
 				j.espaceJoueur.add(guide);
 				j.espaceJoueur.add(croyantMilieu);
 				j.main.remove(idGuide);
