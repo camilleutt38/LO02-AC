@@ -169,6 +169,38 @@ public class Partie {
 		}
 
 	}
+	
+public Joueur joueurSuivant(Joueur joueurEnCours) {
+		
+		if (this.joueurs.indexOf(joueurEnCours)<this.joueurs.size()-1) {
+			int id = this.joueurs.indexOf(joueurEnCours) + 1;
+			Joueur joueurSuivant = this.joueurs.get(id) ;
+			return joueurSuivant ;
+		} else {
+			Joueur joueurSuivant = this.joueurs.get(0) ;
+			return joueurSuivant ;
+		} 
+	}
+	
+	public void tour() {
+		Joueur joueurDe = this.joueurs.get(0) ;
+		for (int j=0; j<=5; j++) {
+			System.out.println("Tour numero : " +j);
+		//while (this.etatPartie==true) {
+			Joueur joueurJoue = joueurDe ;
+			System.out.println(joueurDe.nom + " lance le de !");
+			this.lancerDe();
+			for (int i=0; i<this.joueurs.size(); i++) {
+				if (this.etatPartie== true) {
+					System.out.println(joueurJoue.nom + " joue son tour !");
+					joueurJoue = this.joueurSuivant(joueurJoue);
+					
+				}
+			}
+			joueurDe = this.joueurSuivant(joueurDe);
+		}
+		//}
+	}
 
 
 	public static void main(String[] args) {
