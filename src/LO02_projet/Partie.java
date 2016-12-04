@@ -225,7 +225,7 @@ public class Partie {
 			int nb = scz.nextInt();
 			if (nb > 0 && nb < j.main.size()) {
 				for (int i = 1; i < (nb + 1); i++) {
-					System.out.println("Entrez l'index de la carte a  defausser :");
+					System.out.println("Entrez l'index de la carte a defausser :");
 					Scanner sca = new Scanner(System.in);
 					int choixdefausse = sca.nextInt();
 					j.defaussercarte(j.main.get(choixdefausse));
@@ -234,7 +234,7 @@ public class Partie {
 			}
 		} else if (choixTour == 3) {
 			System.out.println(j.nom
-					+ "Quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
+					+ " quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
 			Scanner sc = new Scanner(System.in);
 			int choix = sc.nextInt();
 			if (choix == 1) {
@@ -242,8 +242,9 @@ public class Partie {
 				jouer = true ;
 				}
 			} else if (choix == 2) {
-				this.milieu.recupererCroyant(j);
+				if(this.milieu.recupererCroyant(j)== true){;
 				jouer = true ;
+				}
 			} else if (choix == 3) {
 				this.poserApocalypse(j);
 				jouer= true ;
@@ -253,6 +254,43 @@ public class Partie {
 			
 		}
 		}
+	}
+	
+	public void activerCapacite(Joueur j) {
+		System.out.println("Quel type de carte voulez-vous sacrifier ? 1 pour Croyant, 2 pour Guide");
+		Scanner scc = new Scanner(System.in) ;
+		int type = scc.nextInt();
+		if (type==1) {
+		System.out.println("Entrer l'index de la carte dans votre espace joueur dont vous voulez activer la capacite :");
+		Scanner scb = new Scanner(System.in);
+		int nb = scb.nextInt();
+		if (nb>=0 && nb <=j.espaceJoueur.size()) {
+			Action carte = j.espaceJoueur.get(nb);
+			// CEST ICI QUON LISTE LES CAPACITES CROYANTS
+			if (carte.capacite=="Donne un point d'action d'origine Jour") {
+				j.PtsAction[0] = j.PtsAction[0] + 1 ;
+			} else {
+				System.out.println("cette capacite n'est pas encore utilisable");
+			}
+		} else {
+			System.out.println("Index de carte non valable");
+		}
+		} else if (type==2) {
+			System.out.println("Entrer l'index de la carte dans votre espace joueur dont vous voulez activer la capacite :");
+			Scanner scb = new Scanner(System.in);
+			int nb = scb.nextInt();
+			if (nb>=0 && nb <=j.espaceJoueur.size()) {
+				Action carte = j.espaceJoueur.get(nb);
+				// CEST ICI QUON LISTE LES CAPACITES GUIDES
+				if (carte.capacite=="Equivalent a la pose d'une carte Apocalypse") {
+					this.doApocalypse();
+				} else {
+					System.out.println("cette capacite n'est pas encore utilisable");
+				}
+		} else {
+			System.out.println("Index de carte non valable");
+		}
+	}
 	}
 
 	public static void main(String[] args) {
@@ -294,7 +332,10 @@ public class Partie {
 		// System.out.println(camille);
 
 		// p.doApocalypse();
-		p.tour();
+		//p.tour();
+		p.activerCapacite(camille);
+		
+		System.out.println(camille);
 
 	}
 

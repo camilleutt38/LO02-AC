@@ -75,13 +75,17 @@ public class Milieu {
 		
 	}
 
-	public void recupererCroyant(Joueur j) {
-
+	public boolean recupererCroyant(Joueur j) {
+		boolean recup = false ;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrer l'index d'un Croyant du milieu pour le recuperer");
 		int idCroyantMilieu = sc.nextInt();
-		System.out.println("Entrer l'index d'un Guide Spirituel de votre main");
+		System.out.println("Entrer l'index d'un Guide Spirituel de votre main ou 100 pour choisir une autre action");
 		int idGuide = sc.nextInt();
+		if (idGuide== 100) {
+			System.out.println("Vous avez choisi de ne pas recuperer de croyant");
+			return recup ;
+		} else {
 
 		try {
 
@@ -103,6 +107,7 @@ public class Milieu {
 							j.espaceJoueur.add(croyantMilieu);
 							j.main.remove(idGuide);
 							j.nbPrieres = j.nbPrieres + croyantMilieu.nbPriere;
+							recup = true ;
 						} else {
 							System.out.println("Pas assez de point d'action d'origine Jour...");
 						}
@@ -115,6 +120,7 @@ public class Milieu {
 							j.espaceJoueur.add(croyantMilieu);
 							j.main.remove(idGuide);
 							j.nbPrieres = j.nbPrieres + croyantMilieu.nbPriere;
+							recup = true ;
 						} else {
 							System.out.println("Pas assez de point d'action d'origine Nuit...");
 						}
@@ -127,20 +133,22 @@ public class Milieu {
 							j.espaceJoueur.add(croyantMilieu);
 							j.main.remove(idGuide);
 							j.nbPrieres = j.nbPrieres + croyantMilieu.nbPriere;
+							recup = true ;
 						} else {
 							System.out.println("Pas assez de point d'action d'origine Neant...");
 						}
 					}
 				} else {
-					System.out.println("Index de carte non valable");
+					System.out.println("Le guide et le croyant n'ont aucun dogme en commun...");
 				}
 			} else {
-				System.out.println("Le guide et le croyant n'ont aucun dogme en commun...");
+				System.out.println("Index de carte non valable");
 			}
 		} catch (ClassCastException e) {
 			System.out.println("Vous n'avez pas selectionne un Guide Spirituel...");
 		}
 		System.out.println(this.CroyantsMilieu);
+		return recup ;
 	}
-
+}
 }
