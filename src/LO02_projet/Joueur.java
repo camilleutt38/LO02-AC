@@ -40,10 +40,14 @@ public class Joueur {
 		this.divinite = divinite;
 	}
 	
-
-	@Override
 	public String toString() {
-		return "Joueur [nom : " + nom + "\n" + " Nombre de Prieres : " + nbPrieres + "\n" + ", main : " + main + "\n" + "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant : " + PtsAction[2] + "]" + "\n" + "Divnite : " +divinite + "\n" + "Espace Joueur :" +espaceJoueur+ "\n";
+		String test = "Joueur [nom : " + nom + "\n" + " Nombre de Prieres : " + nbPrieres + "\n" ;
+		String test2 = "";
+	for (int i=0; i<main.size(); i++) {
+		test2 =test2 + i + " " + main.get(i)  ; 
+	}
+	String test3 = "Points d'action : Jour : " + PtsAction[0] + " Nuit : " + PtsAction[1] + " Neant : " + PtsAction[2] + "]" + "\n" + "Divnite : " +divinite + "\n" + "Espace Joueur :" +espaceJoueur+ "\n";
+	return test + test2 + test3 ;
 	}
 	
 	public void PtsActionJour(int i){

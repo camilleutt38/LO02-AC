@@ -213,7 +213,7 @@ public Joueur joueurSuivant(Joueur joueurEnCours) {
 			this.cartes.tirerCarteDessus();
 		}
 		else if (choixTour == 2){
-			System.out.println("Entrez l'index de la carte à défausser :");
+			System.out.println("Entrez l'index de la carte a� defausser :");
 			Scanner sca = new Scanner(System.in);
 			int choixdefausse = sca.nextInt();
 			this.defausse.defausseCarte(j.main.get(choixdefausse));
