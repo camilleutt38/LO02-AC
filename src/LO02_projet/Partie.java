@@ -95,10 +95,16 @@ public class Partie {
 		}
 	}
 
-	public void poserApocalypse(Joueur j) {
+	public boolean poserApocalypse(Joueur j) {
+		boolean poser = false;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Entrer l'index d'une carte Apocalypse dans votre main");
+		System.out
+				.println("Entrer l'index d'une carte Apocalypse dans votre main, ou 100 pour choisir une autre action");
 		int idApocalypse = sc.nextInt();
+		if (idApocalypse == 100) {
+			System.out.println("Vous avez choisi de ne pas poser d'Apocalypse");
+			return poser;
+		}
 
 		try {
 
@@ -110,6 +116,7 @@ public class Partie {
 						this.doApocalypse();
 						j.PtsAction[0] = j.PtsAction[0] - 1;
 						j.main.remove(idApocalypse);
+						poser = true ;
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Jour...");
 					}
@@ -118,6 +125,7 @@ public class Partie {
 						this.doApocalypse();
 						j.PtsAction[1] = j.PtsAction[1] - 1;
 						j.main.remove(idApocalypse);
+						poser = true ;
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Nuit...");
 					}
@@ -126,6 +134,7 @@ public class Partie {
 						this.doApocalypse();
 						j.PtsAction[2] = j.PtsAction[2] - 1;
 						j.main.remove(idApocalypse);
+						poser = true ;
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Neant...");
 					}
@@ -137,6 +146,7 @@ public class Partie {
 		} catch (ClassCastException e) {
 			System.out.println("Vous n'avez pas selectionnÃ© une Apocalypse...");
 		}
+		return poser ;
 	}
 
 	public void doApocalypse() {
@@ -217,7 +227,7 @@ public class Partie {
 			jouer = true ;
 			}
 			} else {
-				System.out.println("Assez de cartes");
+				System.out.println("Tu as deja assez de cartes !");
 			}
 		} else if (choixTour == 2) {
 			System.out.println("Combien de cartes voulez-vous defausser ?");
@@ -225,7 +235,7 @@ public class Partie {
 			int nb = scz.nextInt();
 			if (nb > 0 && nb < j.main.size()) {
 				for (int i = 1; i < (nb + 1); i++) {
-					System.out.println("Entrez l'index de la carte a defausser :");
+					System.out.println("Entrez l'index de la carte aï¿½defausser :");
 					Scanner sca = new Scanner(System.in);
 					int choixdefausse = sca.nextInt();
 					j.defaussercarte(j.main.get(choixdefausse));
@@ -246,8 +256,9 @@ public class Partie {
 				jouer = true ;
 				}
 			} else if (choix == 3) {
-				this.poserApocalypse(j);
-				jouer= true ;
+				if(this.poserApocalypse(j)== true){;
+				jouer = true ;
+				}
 			} else {
 				System.out.println("Pas un type de cartes...");
 			}
@@ -255,42 +266,44 @@ public class Partie {
 		}
 		}
 	}
-	
+
 	public void activerCapacite(Joueur j) {
 		System.out.println("Quel type de carte voulez-vous sacrifier ? 1 pour Croyant, 2 pour Guide");
-		Scanner scc = new Scanner(System.in) ;
+		Scanner scc = new Scanner(System.in);
 		int type = scc.nextInt();
-		if (type==1) {
-		System.out.println("Entrer l'index de la carte dans votre espace joueur dont vous voulez activer la capacite :");
-		Scanner scb = new Scanner(System.in);
-		int nb = scb.nextInt();
-		if (nb>=0 && nb <=j.espaceJoueur.size()) {
-			Action carte = j.espaceJoueur.get(nb);
-			// CEST ICI QUON LISTE LES CAPACITES CROYANTS
-			if (carte.capacite=="Donne un point d'action d'origine Jour") {
-				j.PtsAction[0] = j.PtsAction[0] + 1 ;
-			} else {
-				System.out.println("cette capacite n'est pas encore utilisable");
-			}
-		} else {
-			System.out.println("Index de carte non valable");
-		}
-		} else if (type==2) {
-			System.out.println("Entrer l'index de la carte dans votre espace joueur dont vous voulez activer la capacite :");
+		if (type == 1) {
+			System.out.println(
+					"Entrer l'index de la carte dans votre espace joueur dont vous voulez activer la capacite :");
 			Scanner scb = new Scanner(System.in);
 			int nb = scb.nextInt();
-			if (nb>=0 && nb <=j.espaceJoueur.size()) {
+			if (nb >= 0 && nb <= j.espaceJoueur.size()) {
+				Action carte = j.espaceJoueur.get(nb);
+				// CEST ICI QUON LISTE LES CAPACITES CROYANTS
+				if (carte.capacite == "Donne un point d'action d'origine Jour") {
+					j.PtsAction[0] = j.PtsAction[0] + 1;
+				} else {
+					System.out.println("cette capacite n'est pas encore utilisable");
+				}
+			} else {
+				System.out.println("Index de carte non valable");
+			}
+		} else if (type == 2) {
+			System.out.println(
+					"Entrer l'index de la carte dans votre espace joueur dont vous voulez activer la capacite :");
+			Scanner scb = new Scanner(System.in);
+			int nb = scb.nextInt();
+			if (nb >= 0 && nb <= j.espaceJoueur.size()) {
 				Action carte = j.espaceJoueur.get(nb);
 				// CEST ICI QUON LISTE LES CAPACITES GUIDES
-				if (carte.capacite=="Equivalent a la pose d'une carte Apocalypse") {
+				if (carte.capacite == "Equivalent a la pose d'une carte Apocalypse") {
 					this.doApocalypse();
 				} else {
 					System.out.println("cette capacite n'est pas encore utilisable");
 				}
-		} else {
-			System.out.println("Index de carte non valable");
+			} else {
+				System.out.println("Index de carte non valable");
+			}
 		}
-	}
 	}
 
 	public static void main(String[] args) {
@@ -332,10 +345,10 @@ public class Partie {
 		// System.out.println(camille);
 
 		// p.doApocalypse();
-		//p.tour();
-		p.activerCapacite(camille);
-		
-		System.out.println(camille);
+		 p.tour();
+		//p.activerCapacite(camille);
+
+		//System.out.println(camille);
 
 	}
 
