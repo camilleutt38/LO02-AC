@@ -1,8 +1,8 @@
 package LO02_projet;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Partie {
 
@@ -93,12 +93,57 @@ public class Partie {
 			}
 		}
 	}
+	
+	public void poserApocalypse(Joueur j){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Entrer l'index d'une carte Apocalypse dans votre main");
+		int idApocalypse = sc.nextInt();
+		
+		try {
+			
+			if (idApocalypse>=0 && idApocalypse<=6) {
+			Apocalypse a =(Apocalypse)j.main.get(idApocalypse);
+			
+
+			if (a.origine == Origine.jour) {
+				if (j.PtsAction[0] > 0) {
+					this.doApocalypse();
+					j.PtsAction[0] = j.PtsAction[0] - 1;
+					j.main.remove(idApocalypse);
+				} else {
+					System.out.println("Pas assez de point d'action d'origine Jour...");
+				}
+			} else if (a.origine == Origine.nuit) {
+				if (j.PtsAction[1] > 0) {
+					this.doApocalypse();
+					j.PtsAction[1] = j.PtsAction[1] - 1;
+					j.main.remove(idApocalypse);
+				} else {
+					System.out.println("Pas assez de point d'action d'origine Nuit...");
+				}
+			} else {
+				if (j.PtsAction[2] > 0) {
+					this.doApocalypse();
+					j.PtsAction[2] = j.PtsAction[2] - 1;
+					j.main.remove(idApocalypse);
+				} else {
+					System.out.println("Pas assez de point d'action d'origine Neant...");
+				}
+			}
+			} else {
+				System.out.println("Index de carte non valable");
+			}
+			
+		} catch (ClassCastException e) {
+			System.out.println("Vous n'avez pas selectionné une Apocalypse...");
+		}
+	}
 
 	public void doApocalypse() {
-		int i = 2;
-		if (i > 4) {
+		int nbJoueurs = joueurs.size();
+		if (nbJoueurs > 4) {
 			Iterator<Joueur> ite = joueurs.iterator();
-			Joueur joueurPerdant = new Joueur ("Perdant");
+			Joueur joueurPerdant = new Joueur("Perdant");
 			joueurPerdant.nbPrieres = 1000;
 			while (ite.hasNext()) {
 				Joueur j = (Joueur) ite.next();
@@ -112,7 +157,7 @@ public class Partie {
 		} else {
 
 			Iterator<Joueur> ite = joueurs.iterator();
-			Joueur joueurGagnant = new Joueur ("Gagnant");
+			Joueur joueurGagnant = new Joueur("Gagnant");
 			while (ite.hasNext()) {
 				Joueur j = (Joueur) ite.next();
 				if (j.nbPrieres > joueurGagnant.nbPrieres) {
@@ -124,6 +169,7 @@ public class Partie {
 		}
 
 	}
+
 
 	public static void main(String[] args) {
 
@@ -160,7 +206,7 @@ public class Partie {
 		p.milieu.recupererCroyant(camille);
 
 		System.out.println(camille);
-		
+
 		p.doApocalypse();
 
 	}
