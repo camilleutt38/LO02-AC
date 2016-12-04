@@ -22,6 +22,10 @@ public class Joueur {
 		main.add(action);
 		
 	}
+	
+	public void defaussercarte(Action action){
+		main.remove(action);
+	}
 
 	public String getNom() {
 		return nom;

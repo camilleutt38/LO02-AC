@@ -11,6 +11,7 @@ public class Partie {
 	public PileDivinites pileDivi;
 	public Milieu milieu;
 	public boolean etatPartie;
+	public Defausse defausse;
 
 	public Partie() {
 		etatPartie = true;
@@ -193,6 +194,8 @@ public Joueur joueurSuivant(Joueur joueurEnCours) {
 			for (int i=0; i<this.joueurs.size(); i++) {
 				if (this.etatPartie== true) {
 					System.out.println(joueurJoue.nom + " joue son tour !");
+					this.jouerTour(joueurJoue);
+					System.out.println(joueurJoue);
 					joueurJoue = this.joueurSuivant(joueurJoue);
 					
 				}
@@ -200,6 +203,38 @@ public Joueur joueurSuivant(Joueur joueurEnCours) {
 			joueurDe = this.joueurSuivant(joueurDe);
 		}
 		//}
+	}
+	
+	public void jouerTour(Joueur j){
+		System.out.println("Que veu-tu faire ? 1 pour piocher, 2 pour defausser, 3 pour jouer une carte");
+		Scanner sce = new Scanner(System.in);
+		int choixTour = sce.nextInt();
+		if (choixTour == 1){
+			this.cartes.tirerCarteDessus();
+		}
+		else if (choixTour == 2){
+			System.out.println("Entrez l'index de la carte à défausser :");
+			Scanner sca = new Scanner(System.in);
+			int choixdefausse = sca.nextInt();
+			this.defausse.defausseCarte(j.main.get(choixdefausse));
+			j.defaussercarte(j.main.get(choixdefausse));
+		}
+		else if (choixTour == 3){
+			System.out.println(j.nom + "Quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
+			Scanner sc = new Scanner(System.in);
+			int choix = sc.nextInt();
+			if (choix == 1){
+				this.milieu.poserCroyant(j);
+			}
+			else if (choix == 2){
+				this.milieu.recupererCroyant(j);
+			}
+			else if (choix == 3){
+				this.poserApocalypse(j);
+			}
+		}
+		
+		
 	}
 
 
@@ -214,6 +249,7 @@ public Joueur joueurSuivant(Joueur joueurEnCours) {
 
 		p.ajouterJoueur(camille);
 		p.ajouterJoueur(lucie);
+		p.ajouterJoueur(chris);
 
 		p.distribuerCarte();
 
@@ -227,19 +263,22 @@ public Joueur joueurSuivant(Joueur joueurEnCours) {
 
 		System.out.println(camille);
 		System.out.println(lucie);
+		System.out.println(chris);
 
 		// On fait poser un Croyant a Lucie (si elle peut)
-		p.milieu.poserCroyant(lucie);
+		//p.milieu.poserCroyant(lucie);
 
 		// Contenu du mileu :
-		System.out.println("Contenu du milieu : " + p.milieu.CroyantsMilieu);
+		//System.out.println("Contenu du milieu : " + p.milieu.CroyantsMilieu);
 
 		// Camille va essayer de voler le croyant du milieu
-		p.milieu.recupererCroyant(camille);
+		//p.milieu.recupererCroyant(camille);
 
-		System.out.println(camille);
+		//System.out.println(camille);
 
-		p.doApocalypse();
+		//p.doApocalypse();
+		p.tour();
+		
 
 	}
 
