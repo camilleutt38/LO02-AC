@@ -12,11 +12,15 @@ public class Milieu {
 		nbCroyants = 0;
 	}
 
-	public void poserCroyant(Joueur j) {
-
+	public boolean poserCroyant(Joueur j) {
+		boolean poser = false ;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Entrer l'index d'un Croyant dans votre main");
+		System.out.println("Entrer l'index d'un Croyant dans votre main, ou 100 pour choisir une autre action");
 		int idCroyant = sc.nextInt();
+		if (idCroyant == 100) {
+			System.out.println("Vous avez choisi de ne pas poser de croyant");
+			return poser ;
+		} else {
 
 		try {
 
@@ -29,6 +33,8 @@ public class Milieu {
 						this.nbCroyants = this.nbCroyants + 1;
 						j.PtsAction[0] = j.PtsAction[0] - 1;
 						j.main.remove(idCroyant);
+						poser = true ;
+						
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Jour...");
 					}
@@ -38,6 +44,8 @@ public class Milieu {
 						this.nbCroyants = this.nbCroyants + 1;
 						j.PtsAction[1] = j.PtsAction[1] - 1;
 						j.main.remove(idCroyant);
+						poser = true ;
+					
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Nuit...");
 					}
@@ -47,6 +55,8 @@ public class Milieu {
 						this.nbCroyants = this.nbCroyants + 1;
 						j.PtsAction[2] = j.PtsAction[2] - 1;
 						j.main.remove(idCroyant);
+						poser = true ;
+						
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Neant...");
 					}
@@ -59,6 +69,10 @@ public class Milieu {
 			System.out.println("Vous n'avez pas selectionne un Croyant...");
 		}
 		System.out.println(this.CroyantsMilieu);
+		return poser ;
+		}	
+		
+		
 	}
 
 	public void recupererCroyant(Joueur j) {

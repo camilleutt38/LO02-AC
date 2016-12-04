@@ -94,47 +94,46 @@ public class Partie {
 			}
 		}
 	}
-	
-	public void poserApocalypse(Joueur j){
+
+	public void poserApocalypse(Joueur j) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrer l'index d'une carte Apocalypse dans votre main");
 		int idApocalypse = sc.nextInt();
-		
-		try {
-			
-			if (idApocalypse>=0 && idApocalypse<=6) {
-			Apocalypse a =(Apocalypse)j.main.get(idApocalypse);
-			
 
-			if (a.origine == Origine.jour) {
-				if (j.PtsAction[0] > 0) {
-					this.doApocalypse();
-					j.PtsAction[0] = j.PtsAction[0] - 1;
-					j.main.remove(idApocalypse);
+		try {
+
+			if (idApocalypse >= 0 && idApocalypse <= 6) {
+				Apocalypse a = (Apocalypse) j.main.get(idApocalypse);
+
+				if (a.origine == Origine.jour) {
+					if (j.PtsAction[0] > 0) {
+						this.doApocalypse();
+						j.PtsAction[0] = j.PtsAction[0] - 1;
+						j.main.remove(idApocalypse);
+					} else {
+						System.out.println("Pas assez de point d'action d'origine Jour...");
+					}
+				} else if (a.origine == Origine.nuit) {
+					if (j.PtsAction[1] > 0) {
+						this.doApocalypse();
+						j.PtsAction[1] = j.PtsAction[1] - 1;
+						j.main.remove(idApocalypse);
+					} else {
+						System.out.println("Pas assez de point d'action d'origine Nuit...");
+					}
 				} else {
-					System.out.println("Pas assez de point d'action d'origine Jour...");
+					if (j.PtsAction[2] > 0) {
+						this.doApocalypse();
+						j.PtsAction[2] = j.PtsAction[2] - 1;
+						j.main.remove(idApocalypse);
+					} else {
+						System.out.println("Pas assez de point d'action d'origine Neant...");
+					}
 				}
-			} else if (a.origine == Origine.nuit) {
-				if (j.PtsAction[1] > 0) {
-					this.doApocalypse();
-					j.PtsAction[1] = j.PtsAction[1] - 1;
-					j.main.remove(idApocalypse);
-				} else {
-					System.out.println("Pas assez de point d'action d'origine Nuit...");
-				}
-			} else {
-				if (j.PtsAction[2] > 0) {
-					this.doApocalypse();
-					j.PtsAction[2] = j.PtsAction[2] - 1;
-					j.main.remove(idApocalypse);
-				} else {
-					System.out.println("Pas assez de point d'action d'origine Neant...");
-				}
-			}
 			} else {
 				System.out.println("Index de carte non valable");
 			}
-			
+
 		} catch (ClassCastException e) {
 			System.out.println("Vous n'avez pas selectionn√© une Apocalypse...");
 		}
@@ -170,73 +169,91 @@ public class Partie {
 		}
 
 	}
-	
-public Joueur joueurSuivant(Joueur joueurEnCours) {
-		
-		if (this.joueurs.indexOf(joueurEnCours)<this.joueurs.size()-1) {
+
+	public Joueur joueurSuivant(Joueur joueurEnCours) {
+
+		if (this.joueurs.indexOf(joueurEnCours) < this.joueurs.size() - 1) {
 			int id = this.joueurs.indexOf(joueurEnCours) + 1;
-			Joueur joueurSuivant = this.joueurs.get(id) ;
-			return joueurSuivant ;
+			Joueur joueurSuivant = this.joueurs.get(id);
+			return joueurSuivant;
 		} else {
-			Joueur joueurSuivant = this.joueurs.get(0) ;
-			return joueurSuivant ;
-		} 
+			Joueur joueurSuivant = this.joueurs.get(0);
+			return joueurSuivant;
+		}
 	}
-	
+
 	public void tour() {
-		Joueur joueurDe = this.joueurs.get(0) ;
-		for (int j=0; j<=5; j++) {
-			System.out.println("Tour numero : " +j);
-		//while (this.etatPartie==true) {
-			Joueur joueurJoue = joueurDe ;
+		Joueur joueurDe = this.joueurs.get(0);
+		for (int j = 0; j <= 5; j++) {
+			System.out.println("Tour numero : " + j);
+			// while (this.etatPartie==true) {
+			Joueur joueurJoue = joueurDe;
 			System.out.println(joueurDe.nom + " lance le de !");
 			this.lancerDe();
-			for (int i=0; i<this.joueurs.size(); i++) {
-				if (this.etatPartie== true) {
+			for (int i = 0; i < this.joueurs.size(); i++) {
+				if (this.etatPartie == true) {
 					System.out.println(joueurJoue.nom + " joue son tour !");
 					this.jouerTour(joueurJoue);
 					System.out.println(joueurJoue);
 					joueurJoue = this.joueurSuivant(joueurJoue);
-					
+
 				}
 			}
 			joueurDe = this.joueurSuivant(joueurDe);
 		}
-		//}
-	}
-	
-	public void jouerTour(Joueur j){
-		System.out.println("Que veu-tu faire ? 1 pour piocher, 2 pour defausser, 3 pour jouer une carte");
-		Scanner sce = new Scanner(System.in);
-		int choixTour = sce.nextInt();
-		if (choixTour == 1){
-			this.cartes.tirerCarteDessus();
-		}
-		else if (choixTour == 2){
-			System.out.println("Entrez l'index de la carte a† defausser :");
-			Scanner sca = new Scanner(System.in);
-			int choixdefausse = sca.nextInt();
-			this.defausse.defausseCarte(j.main.get(choixdefausse));
-			j.defaussercarte(j.main.get(choixdefausse));
-		}
-		else if (choixTour == 3){
-			System.out.println(j.nom + "Quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
-			Scanner sc = new Scanner(System.in);
-			int choix = sc.nextInt();
-			if (choix == 1){
-				this.milieu.poserCroyant(j);
-			}
-			else if (choix == 2){
-				this.milieu.recupererCroyant(j);
-			}
-			else if (choix == 3){
-				this.poserApocalypse(j);
-			}
-		}
-		
-		
+		// }
 	}
 
+	public void jouerTour(Joueur j) {
+		Boolean jouer = false ;
+		while (jouer==false) {
+		System.out.println("Que veux-tu faire ? 1 pour completer ta main, 2 pour defausser, 3 pour jouer une carte");
+		Scanner sce = new Scanner(System.in);
+		int choixTour = sce.nextInt();
+		if (choixTour == 1) {
+			if (j.main.size()<7) {
+			for (int i=j.main.size(); i<7; i++) {
+			j.prendreCarte(cartes.tirerCarteDessus());
+			jouer = true ;
+			}
+			} else {
+				System.out.println("Assez de cartes");
+			}
+		} else if (choixTour == 2) {
+			System.out.println("Combien de cartes voulez-vous defausser ?");
+			Scanner scz = new Scanner(System.in);
+			int nb = scz.nextInt();
+			if (nb > 0 && nb < j.main.size()) {
+				for (int i = 1; i < (nb + 1); i++) {
+					System.out.println("Entrez l'index de la carte a† defausser :");
+					Scanner sca = new Scanner(System.in);
+					int choixdefausse = sca.nextInt();
+					j.defaussercarte(j.main.get(choixdefausse));
+				}
+				jouer = true ;
+			}
+		} else if (choixTour == 3) {
+			System.out.println(j.nom
+					+ "Quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
+			Scanner sc = new Scanner(System.in);
+			int choix = sc.nextInt();
+			if (choix == 1) {
+				if (this.milieu.poserCroyant(j)==true) {
+				jouer = true ;
+				}
+			} else if (choix == 2) {
+				this.milieu.recupererCroyant(j);
+				jouer = true ;
+			} else if (choix == 3) {
+				this.poserApocalypse(j);
+				jouer= true ;
+			} else {
+				System.out.println("Pas un type de cartes...");
+			}
+			
+		}
+		}
+	}
 
 	public static void main(String[] args) {
 
@@ -266,19 +283,18 @@ public Joueur joueurSuivant(Joueur joueurEnCours) {
 		System.out.println(chris);
 
 		// On fait poser un Croyant a Lucie (si elle peut)
-		//p.milieu.poserCroyant(lucie);
+		// p.milieu.poserCroyant(lucie);
 
 		// Contenu du mileu :
-		//System.out.println("Contenu du milieu : " + p.milieu.CroyantsMilieu);
+		// System.out.println("Contenu du milieu : " + p.milieu.CroyantsMilieu);
 
 		// Camille va essayer de voler le croyant du milieu
-		//p.milieu.recupererCroyant(camille);
+		// p.milieu.recupererCroyant(camille);
 
-		//System.out.println(camille);
+		// System.out.println(camille);
 
-		//p.doApocalypse();
+		// p.doApocalypse();
 		p.tour();
-		
 
 	}
 
