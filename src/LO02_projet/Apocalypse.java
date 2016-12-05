@@ -8,7 +8,7 @@ public class Apocalypse extends Action {
 
 	public Apocalypse(String capacite, String nom, Origine origine, EtatCarte etat) {
 		super(capacite, nom, origine, etat);
-		// TODO Auto-generated constructor stub
+		type = "apocalypse";
 	}
 	public String toString() {
 		return "Apocalypse d'origine : " + origine + "\n";

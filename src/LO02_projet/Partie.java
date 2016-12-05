@@ -152,26 +152,25 @@ public class Partie {
 	public void doApocalypse() {
 		int nbJoueurs = joueurs.size();
 		boolean egalite = false;
-		
+
 		Iterator<Joueur> iter = joueurs.iterator();
 		Joueur joueurEgalite = this.joueurs.get(0);
 		while (iter.hasNext()) {
 			Joueur j = (Joueur) iter.next();
 			if (j.nbPrieres == joueurEgalite.nbPrieres) {
 				egalite = true;
-			} 
+			}
 		}
-		if (egalite){
+		if (egalite) {
 			System.out.println("Il y a égalité on n'élimine personne !");
-		}
-		else if (nbJoueurs > 4 && egalite == false) {
+		} else if (nbJoueurs > 4 && egalite == false) {
 			Iterator<Joueur> ite = joueurs.iterator();
 			Joueur joueurPerdant = this.joueurs.get(0);
 			while (ite.hasNext()) {
 				Joueur j = (Joueur) ite.next();
 				if (j.nbPrieres < joueurPerdant.nbPrieres) {
 					joueurPerdant = j;
-				} 
+				}
 			}
 			joueurs.remove(joueurPerdant);
 			System.out.println("Le joueur " + joueurPerdant.nom + " a été éliminé ! ");
@@ -215,7 +214,15 @@ public class Partie {
 			for (int i = 0; i < this.joueurs.size(); i++) {
 				if (this.etatPartie == true) {
 					System.out.println(joueurJoue.nom + " joue son tour !");
-					this.jouerTour(joueurJoue);
+					if (joueurJoue.IA == false) {
+						this.jouerTour(joueurJoue);
+					} else if (joueurJoue.IA == true){
+						if (joueurJoue.decision(this)){
+							System.out.println("L'IA a su jouer !");
+						} else {
+							System.out.println("Hum désolée notre IA est encore un peu stupide...");
+						}
+					}
 					System.out.println(joueurJoue);
 					joueurJoue = this.joueurSuivant(joueurJoue);
 
@@ -347,18 +354,18 @@ public class Partie {
 			IA jIA = new IA(name);
 			p.joueurs.add(jIA);
 			System.out.println(jIA);
+			System.out.println();
 		}
 
 		p.distribuerCarte();
 
 		p.distribuerDivinite();
 
-		p.lancerDe();
-		p.lancerDe();
-		p.lancerDe();
-		p.lancerDe();
-		p.lancerDe();
-
+		//p.lancerDe();
+		//p.lancerDe();
+		//p.lancerDe();
+		//p.lancerDe();
+		//p.lancerDe();
 		// On fait poser un Croyant a Lucie (si elle peut)
 		// p.milieu.poserCroyant(lucie);
 

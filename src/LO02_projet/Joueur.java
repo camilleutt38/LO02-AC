@@ -63,7 +63,11 @@ public abstract class Joueur {
 		this.PtsAction[2] = k;
 		
 	}
-
+	
+	public boolean decision(Partie partie){
+		boolean jouer = false;
+		return jouer;
+	}
 	
 	
 	} 

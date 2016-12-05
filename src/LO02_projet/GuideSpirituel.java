@@ -12,6 +12,7 @@ public class GuideSpirituel extends Action {
 		this.dogme2 = dogme2;
 		this.nbCroyantsMax = nbCroyantsMax;
 		this.nbcroyantsRattaches = nbCroyantsRattaches;
+		type = "guidespirituel";
 		
 	}
 	

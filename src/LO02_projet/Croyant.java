@@ -12,6 +12,7 @@ public class Croyant extends Action {
 		this.dogme2 = dogme2;
 		this.dogme3 = dogme3;
 		this.nbPriere = nbPriere;
+		type = "croyant";
 	}
 
 	@Override
