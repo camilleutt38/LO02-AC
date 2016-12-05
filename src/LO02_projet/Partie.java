@@ -116,7 +116,7 @@ public class Partie {
 						this.doApocalypse();
 						j.PtsAction[0] = j.PtsAction[0] - 1;
 						j.main.remove(idApocalypse);
-						poser = true ;
+						poser = true;
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Jour...");
 					}
@@ -125,7 +125,7 @@ public class Partie {
 						this.doApocalypse();
 						j.PtsAction[1] = j.PtsAction[1] - 1;
 						j.main.remove(idApocalypse);
-						poser = true ;
+						poser = true;
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Nuit...");
 					}
@@ -134,7 +134,7 @@ public class Partie {
 						this.doApocalypse();
 						j.PtsAction[2] = j.PtsAction[2] - 1;
 						j.main.remove(idApocalypse);
-						poser = true ;
+						poser = true;
 					} else {
 						System.out.println("Pas assez de point d'action d'origine Neant...");
 					}
@@ -146,28 +146,40 @@ public class Partie {
 		} catch (ClassCastException e) {
 			System.out.println("Vous n'avez pas selectionné une Apocalypse...");
 		}
-		return poser ;
+		return poser;
 	}
 
 	public void doApocalypse() {
 		int nbJoueurs = joueurs.size();
-		if (nbJoueurs > 4) {
+		boolean egalite = false;
+		
+		Iterator<Joueur> iter = joueurs.iterator();
+		Joueur joueurEgalite = this.joueurs.get(0);
+		while (iter.hasNext()) {
+			Joueur j = (Joueur) iter.next();
+			if (j.nbPrieres == joueurEgalite.nbPrieres) {
+				egalite = true;
+			} 
+		}
+		if (egalite){
+			System.out.println("Il y a égalité on n'élimine personne !");
+		}
+		else if (nbJoueurs > 4 && egalite == false) {
 			Iterator<Joueur> ite = joueurs.iterator();
-			Joueur joueurPerdant = new Joueur("Perdant");
-			joueurPerdant.nbPrieres = 1000;
+			Joueur joueurPerdant = this.joueurs.get(0);
 			while (ite.hasNext()) {
 				Joueur j = (Joueur) ite.next();
 				if (j.nbPrieres < joueurPerdant.nbPrieres) {
 					joueurPerdant = j;
-				}
+				} 
 			}
 			joueurs.remove(joueurPerdant);
 			System.out.println("Le joueur " + joueurPerdant.nom + " a été éliminé ! ");
 
-		} else {
+		} else if (nbJoueurs <= 4 && egalite == false) {
 
 			Iterator<Joueur> ite = joueurs.iterator();
-			Joueur joueurGagnant = new Joueur("Gagnant");
+			Joueur joueurGagnant = this.joueurs.get(0);
 			while (ite.hasNext()) {
 				Joueur j = (Joueur) ite.next();
 				if (j.nbPrieres > joueurGagnant.nbPrieres) {
@@ -215,55 +227,58 @@ public class Partie {
 	}
 
 	public void jouerTour(Joueur j) {
-		Boolean jouer = false ;
-		while (jouer==false) {
-		System.out.println("Que veux-tu faire ? 1 pour completer ta main, 2 pour defausser, 3 pour jouer une carte");
-		Scanner sce = new Scanner(System.in);
-		int choixTour = sce.nextInt();
-		if (choixTour == 1) {
-			if (j.main.size()<7) {
-			for (int i=j.main.size(); i<7; i++) {
-			j.prendreCarte(cartes.tirerCarteDessus());
-			jouer = true ;
-			}
-			} else {
-				System.out.println("Tu as deja assez de cartes !");
-			}
-		} else if (choixTour == 2) {
-			System.out.println("Combien de cartes voulez-vous defausser ?");
-			Scanner scz = new Scanner(System.in);
-			int nb = scz.nextInt();
-			if (nb > 0 && nb < j.main.size()) {
-				for (int i = 1; i < (nb + 1); i++) {
-					System.out.println("Entrez l'index de la carte a�defausser :");
-					Scanner sca = new Scanner(System.in);
-					int choixdefausse = sca.nextInt();
-					j.defaussercarte(j.main.get(choixdefausse));
+		Boolean jouer = false;
+		while (jouer == false) {
+			System.out
+					.println("Que veux-tu faire ? 1 pour completer ta main, 2 pour defausser, 3 pour jouer une carte");
+			Scanner sce = new Scanner(System.in);
+			int choixTour = sce.nextInt();
+			if (choixTour == 1) {
+				if (j.main.size() < 7) {
+					for (int i = j.main.size(); i < 7; i++) {
+						j.prendreCarte(cartes.tirerCarteDessus());
+						jouer = true;
+					}
+				} else {
+					System.out.println("Tu as deja assez de cartes !");
 				}
-				jouer = true ;
+			} else if (choixTour == 2) {
+				System.out.println("Combien de cartes voulez-vous defausser ?");
+				Scanner scz = new Scanner(System.in);
+				int nb = scz.nextInt();
+				if (nb > 0 && nb < j.main.size()) {
+					for (int i = 1; i < (nb + 1); i++) {
+						System.out.println("Entrez l'index de la carte a�defausser :");
+						Scanner sca = new Scanner(System.in);
+						int choixdefausse = sca.nextInt();
+						j.defaussercarte(j.main.get(choixdefausse));
+					}
+					jouer = true;
+				}
+			} else if (choixTour == 3) {
+				System.out.println(j.nom
+						+ " quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
+				Scanner sc = new Scanner(System.in);
+				int choix = sc.nextInt();
+				if (choix == 1) {
+					if (this.milieu.poserCroyant(j) == true) {
+						jouer = true;
+					}
+				} else if (choix == 2) {
+					if (this.milieu.recupererCroyant(j) == true) {
+						;
+						jouer = true;
+					}
+				} else if (choix == 3) {
+					if (this.poserApocalypse(j) == true) {
+						;
+						jouer = true;
+					}
+				} else {
+					System.out.println("Pas un type de cartes...");
+				}
+
 			}
-		} else if (choixTour == 3) {
-			System.out.println(j.nom
-					+ " quel type de carte veux-tu jouer ? 1 pour croyant 2 pour guide spirituel 3 pour apocalypse");
-			Scanner sc = new Scanner(System.in);
-			int choix = sc.nextInt();
-			if (choix == 1) {
-				if (this.milieu.poserCroyant(j)==true) {
-				jouer = true ;
-				}
-			} else if (choix == 2) {
-				if(this.milieu.recupererCroyant(j)== true){;
-				jouer = true ;
-				}
-			} else if (choix == 3) {
-				if(this.poserApocalypse(j)== true){;
-				jouer = true ;
-				}
-			} else {
-				System.out.println("Pas un type de cartes...");
-			}
-			
-		}
 		}
 	}
 
@@ -309,15 +324,30 @@ public class Partie {
 	public static void main(String[] args) {
 
 		Partie p = new Partie();
-		// System.out.println(p);
 
-		Joueur camille = new Joueur("Camille");
-		Joueur lucie = new Joueur("Lucie");
-		Joueur chris = new Joueur("Chris");
-
-		p.ajouterJoueur(camille);
-		p.ajouterJoueur(lucie);
-		p.ajouterJoueur(chris);
+		System.out.println("Bienvenue dans pandocreon Divinae !");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Combien y a t'il de joueurs reels ?");
+		int nbReel = sc.nextInt();
+		for (int i = 1; i <= nbReel; i++) {
+			Scanner sca = new Scanner(System.in);
+			System.out.println("Quel est le nom du joueur reel numero : " + i);
+			String name = sca.nextLine();
+			Reel jReel = new Reel(name);
+			p.joueurs.add(jReel);
+			System.out.println(jReel);
+		}
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Combien voulez-vous de joueurs IA ?");
+		int nbIA = scan.nextInt();
+		for (int i = 1; i <= nbIA; i++) {
+			Scanner sca = new Scanner(System.in);
+			System.out.println("Quel est le nom du joueur IA numero : " + i);
+			String name = sca.nextLine();
+			IA jIA = new IA(name);
+			p.joueurs.add(jIA);
+			System.out.println(jIA);
+		}
 
 		p.distribuerCarte();
 
@@ -328,10 +358,6 @@ public class Partie {
 		p.lancerDe();
 		p.lancerDe();
 		p.lancerDe();
-
-		System.out.println(camille);
-		System.out.println(lucie);
-		System.out.println(chris);
 
 		// On fait poser un Croyant a Lucie (si elle peut)
 		// p.milieu.poserCroyant(lucie);
@@ -345,10 +371,10 @@ public class Partie {
 		// System.out.println(camille);
 
 		// p.doApocalypse();
-		 p.tour();
-		//p.activerCapacite(camille);
+		p.tour();
+		// p.activerCapacite(camille);
 
-		//System.out.println(camille);
+		// System.out.println(camille);
 
 	}
 

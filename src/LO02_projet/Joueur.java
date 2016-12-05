@@ -2,7 +2,7 @@ package LO02_projet;
 
 import java.util.ArrayList;
 
-public class Joueur {
+public abstract class Joueur {
 
 	
 	public int nbPrieres=0;
@@ -11,6 +11,7 @@ public class Joueur {
 	public Divinite divinite;
 	public int PtsAction[] = {0, 0, 0};
 	public ArrayList<Action> espaceJoueur ;
+	public boolean IA;
 	
 	public Joueur(String nom){
 		this.nom = nom;
