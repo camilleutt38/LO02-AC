@@ -20,40 +20,40 @@ public class Pile {
 
 		Croyant croyant1 = new Croyant("Donne un point d'action d'origine Jour", "Moines", Origine.jour,
 				EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.mystique, 2);
-		//System.out.println(croyant1);
+		//capacite DONE
 		tasDeCartes.add(croyant1);
 
 		Croyant croyant2 = new Croyant("Donne un point d'action d'origine Jour", "Moines", Origine.jour,
 				EtatCarte.pioche, Dogmes.humain, Dogmes.chaos, Dogmes.mystique, 2);
-		//System.out.println(croyant2);
+		//capacite DONE
 		tasDeCartes.add(croyant2);
 
 		Croyant croyant3 = new Croyant("Donne un point d'action d'origine Jour", "Moines", Origine.jour,
 				EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, Dogmes.mystique, 2);
-		//System.out.println(croyant3);
+		//capacite DONE
 		tasDeCartes.add(croyant3);
 
 		Croyant croyant4 = new Croyant("Donne un point d'action d'origine Jour", "Moines", Origine.jour,
 				EtatCarte.pioche, Dogmes.symbole, Dogmes.nature, Dogmes.mystique, 2);
-		//System.out.println(croyant4);
+		//capacite DONE
 		tasDeCartes.add(croyant4);
 
 		Croyant croyant5 = new Croyant("Donne un point d'action d'origine Jour", "Moines", Origine.jour,
 				EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.mystique, 2);
-		//System.out.println(croyant5);
+		//capacite DONE
 		tasDeCartes.add(croyant5);
 
 		// Creation des travailleurs Croyants
 
-		Croyant croyant6 = new Croyant("Empeche une divinite possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de croyants durant ce tour", "Travaileurs", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, Dogmes.chaos, 2 );
+		Croyant croyant6 = new Croyant("Empeche une divinite possedant le Dogme Nature ou Mystique de sacrifier une de ses cartes de croyants durant ce tour", "Travaileurs", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, Dogmes.chaos, 2 );
 		// System.out.println(croyant6);
 		tasDeCartes.add(croyant6);
 		
-		Croyant croyant7 = new Croyant("Empeche une divinite possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de croyants durant ce tour", "Travaileurs", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, Dogmes.nature, 2 );
+		Croyant croyant7 = new Croyant("Empeche une divinite possedant le Dogme Nature ou Mystique de sacrifier une de ses cartes de croyants durant ce tour", "Travaileurs", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, Dogmes.nature, 2 );
 		// System.out.println(croyant7);
 		tasDeCartes.add(croyant7);
 		
-		Croyant croyant8 = new Croyant("Vous piochez deux cartes au hasard dans la main d'une autre Divinité", "Travaileurs", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.mystique, Dogmes.chaos, 2 );
+		Croyant croyant8 = new Croyant("Vous piochez deux cartes au hasard dans la main d'une autre Divinite", "Travaileurs", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.mystique, Dogmes.chaos, 2 );
 		// System.out.println(croyant8);
 		tasDeCartes.add(croyant8);
 		
@@ -85,39 +85,39 @@ public class Pile {
 		
 		Croyant croyant13 = new Croyant("Relancez le de de Cosmogonie. Le tour se finit normalement sous la nouvelle influence", "Diplomates",
 				Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, Dogmes.chaos, 4);
-		//System.out.println(croyant13);
+		//capacite DONE
 		tasDeCartes.add(croyant13);
 
 		// Creation des Demons Croyants
 		
 		Croyant croyant14 = new Croyant("Donne un point d'Action d'Origine Nuit.", "Demons", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.mystique, 2);
-		// System.out.println(croyant14);
+		// capacite DONE
 		tasDeCartes.add(croyant14);
 		
 		Croyant croyant15 = new Croyant("Donne un point d'Action d'Origine Nuit.", "Demons", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.chaos, Dogmes.mystique, 2);
-		// System.out.println(croyant15);
+		// capacite DONE
 		tasDeCartes.add(croyant15);
 		
 		Croyant croyant16 = new Croyant("Donne un point d'Action d'Origine Nuit.", "Demons", Origine.nuit, EtatCarte.pioche, Dogmes.symbole, Dogmes.chaos, Dogmes.mystique, 2);
-		// System.out.println(croyant16);
+		// capacite DONE
 		tasDeCartes.add(croyant16);
 		
 		Croyant croyant17 = new Croyant("Donne un point d'Action d'Origine Nuit.", "Demons", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, Dogmes.mystique, 2);
-		// System.out.println(croyant17);
+		// capacite DONE
 		tasDeCartes.add(croyant17);
 		
 		Croyant croyant18 = new Croyant("Donne un point d'Action d'Origine Nuit.", "Demons", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.mystique, 2);
-		// System.out.println(croyant18);
+		// capacite DONE
 
 		
 
 		// Creation des Alchimistes Croyants
 		
-		Croyant croyant19 = new Croyant("Empeche une Divinit� poss�dant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.symbole, 2);
+		Croyant croyant19 = new Croyant("Empeche une Divinite poss�edant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.symbole, 2);
 		// System.out.println(croyant19);
 		tasDeCartes.add(croyant19);
 		
-		Croyant croyant20 = new Croyant("Emp�che une Divinit� poss�dant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu. ", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.mystique, 2);
+		Croyant croyant20 = new Croyant("Empeche une Divinite poss�dant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu. ", "Alchimistes", Origine.nuit, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, Dogmes.mystique, 2);
 		// System.out.println(croyant20);
 		tasDeCartes.add(croyant20);
 		
@@ -145,8 +145,8 @@ public class Pile {
 		
 		// Creation des Pillards Croyants
 		
-		Croyant croyant25 = new Croyant("Recuperez les points d'action d'une Divinite n'ayant pas encore joue durant ce tour. Les point d'action gardent leur Origine. La Divinite perd ses points.", "Pillars", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.symbole, 4);
-		// System.out.println(croyant25);
+		Croyant croyant25 = new Croyant("Recuperez les points d'action d'une Divinite. Les point d'action gardent leur Origine. La Divinite perd ses points.", "Pillars", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.symbole, 4);
+		// capacite DONE
 		tasDeCartes.add(croyant25);
 
 		
@@ -161,23 +161,23 @@ public class Pile {
 		// Creation des Esprits Croyants
 		
 		Croyant croyant27 = new Croyant("Donne un point d'Action d'Origine Neant", "Esprits", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.humain, 2);
-		// System.out.println(croyant27);
+		// capacite DONE
 		tasDeCartes.add(croyant27);
 		
 		Croyant croyant28 = new Croyant("Donne un point d'Action d'Origine Neant", "Esprits", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.chaos, Dogmes.humain, 2);
-		// System.out.println(croyant28);
+		// capacite DONE
 		tasDeCartes.add(croyant28);
 		
 		Croyant croyant29 = new Croyant("Donne un point d'Action d'Origine Neant", "Esprits", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.chaos, Dogmes.symbole, 2);
-		// System.out.println(croyant29);
+		// capacite DONE
 		tasDeCartes.add(croyant29);
 		
 		Croyant croyant30 = new Croyant("Donne un point d'Action d'Origine Neant", "Esprits", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.symbole, 2);
-		// System.out.println(croyant30);
+		// capacite DONE
 		tasDeCartes.add(croyant30);
 		
 		Croyant croyant31 = new Croyant("Donne un point d'Action d'Origine Neant", "Esprits", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.chaos, 2);
-		// System.out.println(croyant31);
+		// capacite DONE
 		tasDeCartes.add(croyant31);
 		
 
@@ -197,20 +197,20 @@ public class Pile {
 		
 		// Creation du Revenant Croyant
 
-		Croyant croyant35 = new Croyant("Lancez le d� de Cosmgonie. Le tour se fini normalement, mais sous cette nouvelle influence.","Revenant", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, Dogmes.nature, 1);
-		//System.out.println(croyant35);
+		Croyant croyant35 = new Croyant("Relancez le de de Cosmogonie. Le tour se finit normalement sous la nouvelle influence","Revenant", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.humain, Dogmes.nature, 1);
+		//capacite DONE
 		tasDeCartes.add(croyant35);
 
 		// Creation des Revolutionnaires Croyants
 		
-		Croyant croyant36 = new Croyant("Imposez le sacrifice d'une carte de Croyants � autant de Divinites que vous le voulez. Chaque Divinite choisir la carte a sacrifier. Les capacites speciales sont jouees.", "Revolutionnaires", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, Dogmes.symbole, 2);
+		Croyant croyant36 = new Croyant("Imposez le sacrifice d'une carte de Croyants d'autant de Divinites que vous le voulez. Chaque Divinite choisir la carte a sacrifier. Les capacites speciales sont jouees.", "Revolutionnaires", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, Dogmes.symbole, 2);
 		// System.out.println(croyant36);
 		tasDeCartes.add(croyant36);
 
 
 		// Creation des Nihilistes Croyants
 		
-		Croyant croyant37 = new Croyant("Jusqu'� la fin du tour, plus aucune Divinite ne recoit de points d'Action", "Nihillistes", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, Dogmes.mystique, 4);
+		Croyant croyant37 = new Croyant("Jusqu'a la fin du tour, plus aucune Divinite ne recoit de points d'Action", "Nihillistes", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, Dogmes.mystique, 4);
 		// System.out.println(croyant37);
 		tasDeCartes.add(croyant37);
 
@@ -219,48 +219,48 @@ public class Pile {
 
 		// les Martyrs
 		GuideSpirituel guide1 = new GuideSpirituel("Equivalent a la pose d'une carte Apocalypse", "Martyr", Origine.jour, EtatCarte.pioche, Dogmes.humain, Dogmes.nature, 2, 0);
-		// System.out.println(guide1);
+		// capacite DONE
 		tasDeCartes.add(guide1);
 		
 		GuideSpirituel guide2 = new GuideSpirituel("Equivalent a la pose d'une carte Apocalypse", "Martyr", Origine.nuit, EtatCarte.pioche, Dogmes.humain, Dogmes.symbole, 2, 0);
-		// System.out.println(guide2);
+		// capacite DONE
 		tasDeCartes.add(guide2);
 		
 		GuideSpirituel guide3 = new GuideSpirituel("Equivalent a la pose d'une carte Apocalypse", "Martyr", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, 2, 0);
-		// System.out.println(guide3);
+		// capacite DONE
 		tasDeCartes.add(guide3);
 
 		// les Clercs
-		GuideSpirituel guide4 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, 2, 0);
-		// System.out.println(guide4);
+		GuideSpirituel guide4 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.humain, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide4);
 		
-		GuideSpirituel guide5 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.symbole, 2, 0);
-		// System.out.println(guide5);
+		GuideSpirituel guide5 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.symbole, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide5);
 		
-		GuideSpirituel guide6 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, 2, 0);
-		// System.out.println(guide6);
+		GuideSpirituel guide6 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.neant, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide6);
 		
-		GuideSpirituel guide7 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, 2, 0);
-		// System.out.println(guide7);
+		GuideSpirituel guide7 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.nature, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide7);
 		
-		GuideSpirituel guide8 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.symbole, 2, 0);
-		// System.out.println(guide8);
+		GuideSpirituel guide8 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.mystique, Dogmes.symbole, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide8);
 		
-		GuideSpirituel guide9 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, 2, 0);
-		// System.out.println(guide9);
+		GuideSpirituel guide9 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.neant, EtatCarte.pioche, Dogmes.chaos, Dogmes.symbole, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide9);
 		
-		GuideSpirituel guide10 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.mystique, 2, 0);
-		// System.out.println(guide10);
+		GuideSpirituel guide10 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.jour, EtatCarte.pioche, Dogmes.chaos, Dogmes.mystique, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide10);
 		
-		GuideSpirituel guide11 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de cartes de Croyants rattachees. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.humain, 2, 0);
-		// System.out.println(guide11);
+		GuideSpirituel guide11 = new GuideSpirituel("Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.", "Clerc", Origine.nuit, EtatCarte.pioche, Dogmes.nature, Dogmes.humain, 2, 0);
+		// capacite DONE
 		tasDeCartes.add(guide11);
 
 		// le Shaman

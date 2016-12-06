@@ -42,6 +42,11 @@ public class Partie {
 				j.prendreCarte(cartes.tirerCarteDessus());
 			}
 		}
+		Iterator<Joueur> it = joueurs.iterator();
+		while (it.hasNext()) {
+			Joueur j = (Joueur) it.next();
+			System.out.println(j);
+		}
 	}
 
 	public void distribuerDivinite() {
@@ -144,7 +149,7 @@ public class Partie {
 			}
 
 		} catch (ClassCastException e) {
-			System.out.println("Vous n'avez pas selectionné une Apocalypse...");
+			System.out.println("Vous n'avez pas selectionne une Apocalypse...");
 		}
 		return poser;
 	}
@@ -162,7 +167,7 @@ public class Partie {
 			}
 		}
 		if (egalite) {
-			System.out.println("Il y a égalité on n'élimine personne !");
+			System.out.println("Il y a egalite on n'elimine personne !");
 		} else if (nbJoueurs > 4 && egalite == false) {
 			Iterator<Joueur> ite = joueurs.iterator();
 			Joueur joueurPerdant = this.joueurs.get(0);
@@ -173,7 +178,7 @@ public class Partie {
 				}
 			}
 			joueurs.remove(joueurPerdant);
-			System.out.println("Le joueur " + joueurPerdant.nom + " a été éliminé ! ");
+			System.out.println("Le joueur " + joueurPerdant.nom + " a ete elimine ! ");
 
 		} else if (nbJoueurs <= 4 && egalite == false) {
 
@@ -185,7 +190,7 @@ public class Partie {
 					joueurGagnant = j;
 				}
 			}
-			System.out.println("Le joueur " + joueurGagnant.nom + " a gagné !");
+			System.out.println("Le joueur " + joueurGagnant.nom + " a gagne !");
 			etatPartie = false;
 		}
 
@@ -220,7 +225,7 @@ public class Partie {
 						if (joueurJoue.decision(this)){
 							System.out.println("L'IA a su jouer !");
 						} else {
-							System.out.println("Hum désolée notre IA est encore un peu stupide...");
+							System.out.println("Hum desolee notre IA est encore un peu stupide...");
 						}
 					}
 					System.out.println(joueurJoue);
@@ -299,11 +304,44 @@ public class Partie {
 			Scanner scb = new Scanner(System.in);
 			int nb = scb.nextInt();
 			if (nb >= 0 && nb <= j.espaceJoueur.size()) {
-				Action carte = j.espaceJoueur.get(nb);
+				Croyant carte =(Croyant) j.espaceJoueur.get(nb);
 				// CEST ICI QUON LISTE LES CAPACITES CROYANTS
 				if (carte.capacite == "Donne un point d'action d'origine Jour") {
+					System.out.println(carte.capacite);
 					j.PtsAction[0] = j.PtsAction[0] + 1;
-				} else {
+					j.defaussercarte(carte);
+				} else if (carte.capacite == "Donne un point d'Action d'Origine Neant") {
+					System.out.println(carte.capacite);
+					j.PtsAction[2] = j.PtsAction[2] + 1;
+					j.defaussercarte(carte);
+				} else if (carte.capacite == "Donne un point d'Action d'Origine Nuit.") {
+					System.out.println(carte.capacite);
+					j.PtsAction[1] = j.PtsAction[1] + 1;
+					j.defaussercarte(carte);
+				} else if (carte.capacite == "Relancez le de de Cosmogonie. Le tour se finit normalement sous la nouvelle influence") {
+					System.out.println(carte.capacite);
+					this.lancerDe();
+					j.defaussercarte(carte);
+				} else if (carte.capacite == "Recuperez les points d'action d'une Divinite. Les point d'action gardent leur Origine. La Divinite perd ses points.") {
+					System.out.println(carte.capacite);
+					Scanner scf = new Scanner(System.in);
+					System.out.println("Entrer un nom de Divinite");
+					String nom = scf.nextLine();
+					Iterator<Joueur> ite = joueurs.iterator();
+					while (ite.hasNext()) {
+						Joueur divi = (Joueur) ite.next();
+						if (divi.divinite.nom == nom) {
+							j.PtsAction[0] = j.PtsAction[0] + divi.PtsAction[0];
+							j.PtsAction[1] = j.PtsAction[1] + divi.PtsAction[1];
+							j.PtsAction[2] = j.PtsAction[2] + divi.PtsAction[2];
+							divi.PtsAction[0] = 0 ;
+							divi.PtsAction[1] = 0 ;
+							divi.PtsAction[2] = 0 ;
+						}
+					}
+					j.defaussercarte(carte);
+				}
+				else {
 					System.out.println("cette capacite n'est pas encore utilisable");
 				}
 			} else {
@@ -315,11 +353,31 @@ public class Partie {
 			Scanner scb = new Scanner(System.in);
 			int nb = scb.nextInt();
 			if (nb >= 0 && nb <= j.espaceJoueur.size()) {
-				Action carte = j.espaceJoueur.get(nb);
+				GuideSpirituel carte =(GuideSpirituel) j.espaceJoueur.get(nb);
 				// CEST ICI QUON LISTE LES CAPACITES GUIDES
 				if (carte.capacite == "Equivalent a la pose d'une carte Apocalypse") {
+					System.out.println(carte.capacite);
 					this.doApocalypse();
-				} else {
+					j.defaussercarte(carte);
+					j.defaussercarte(j.espaceJoueur.get(nb +1));
+				} else if (carte.capacite == "Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.") {
+					System.out.println(carte.capacite);
+					System.out.println("Ce guide a " +carte.nbcroyantsRattaches+ " de croyants rattaches");
+					Scanner sc = new Scanner(System.in);
+					System.out.println("Vous voulez les convertir en point d'action de quel type ? entrez 1 pour Jour, 2 pour Nuit, 3 pour Neant");
+					int face = sc.nextInt();
+					if (face==1) {
+						j.PtsAction[0] = j.PtsAction[0] + carte.nbcroyantsRattaches;
+					} else if (face==2) {
+						j.PtsAction[1] = j.PtsAction[1] + carte.nbcroyantsRattaches;
+					} else if (face==3) {
+						j.PtsAction[2] = j.PtsAction[2] + carte.nbcroyantsRattaches;
+					}
+					j.defaussercarte(carte);
+					j.defaussercarte(j.espaceJoueur.get(nb +1));
+					
+				}
+				else {
 					System.out.println("cette capacite n'est pas encore utilisable");
 				}
 			} else {
@@ -360,6 +418,8 @@ public class Partie {
 		p.distribuerCarte();
 
 		p.distribuerDivinite();
+		
+
 
 		//p.lancerDe();
 		//p.lancerDe();

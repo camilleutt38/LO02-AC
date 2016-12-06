@@ -93,6 +93,8 @@ public class Milieu {
 
 				GuideSpirituel guide = (GuideSpirituel) j.main.get(idGuide);
 				Croyant croyantMilieu = (Croyant) this.CroyantsMilieu.get(idCroyantMilieu);
+				
+				if (guide.nbCroyantsMax <= croyantMilieu.nbPriere) {
 
 				if (guide.dogme1 == croyantMilieu.dogme1 || guide.dogme1 == croyantMilieu.dogme2
 						|| guide.dogme1 == croyantMilieu.dogme3 || guide.dogme2 == croyantMilieu.dogme1
@@ -106,6 +108,7 @@ public class Milieu {
 							j.espaceJoueur.add(guide);
 							j.espaceJoueur.add(croyantMilieu);
 							j.main.remove(idGuide);
+							guide.nbcroyantsRattaches = croyantMilieu.nbPriere;
 							j.nbPrieres = j.nbPrieres + croyantMilieu.nbPriere;
 							recup = true ;
 						} else {
@@ -119,6 +122,7 @@ public class Milieu {
 							j.espaceJoueur.add(guide);
 							j.espaceJoueur.add(croyantMilieu);
 							j.main.remove(idGuide);
+							guide.nbcroyantsRattaches = croyantMilieu.nbPriere;
 							j.nbPrieres = j.nbPrieres + croyantMilieu.nbPriere;
 							recup = true ;
 						} else {
@@ -132,6 +136,7 @@ public class Milieu {
 							j.espaceJoueur.add(guide);
 							j.espaceJoueur.add(croyantMilieu);
 							j.main.remove(idGuide);
+							guide.nbcroyantsRattaches = croyantMilieu.nbPriere;
 							j.nbPrieres = j.nbPrieres + croyantMilieu.nbPriere;
 							recup = true ;
 						} else {
@@ -140,6 +145,9 @@ public class Milieu {
 					}
 				} else {
 					System.out.println("Le guide et le croyant n'ont aucun dogme en commun...");
+				}
+				} else {
+					System.out.println("Le guide ne peut pas etre rattrache a autant de croyants...");
 				}
 			} else {
 				System.out.println("Index de carte non valable");
