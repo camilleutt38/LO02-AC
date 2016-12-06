@@ -75,7 +75,7 @@ public class Pile {
 		
 		//Creation du Guerrier Saint croyant
 		
-		Croyant croyant12 = new Croyant("Un Guide Spirituel revient dans la main de sa Divinité. Ses Croyants reviennent au centre de la table.", "Guerriers Saints", Origine.jour, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.symbole, 4);
+		Croyant croyant12 = new Croyant("Un Guide Spirituel revient dans la main de sa Divinite. Ses Croyants reviennent au centre de la table.", "Guerriers Saints", Origine.jour, EtatCarte.pioche, Dogmes.mystique, Dogmes.nature, Dogmes.symbole, 4);
 		// System.out.println(croyant12);
 		tasDeCartes.add(croyant12);
 

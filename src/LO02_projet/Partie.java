@@ -42,11 +42,6 @@ public class Partie {
 				j.prendreCarte(cartes.tirerCarteDessus());
 			}
 		}
-		Iterator<Joueur> it = joueurs.iterator();
-		while (it.hasNext()) {
-			Joueur j = (Joueur) it.next();
-			System.out.println(j);
-		}
 	}
 
 	public void distribuerDivinite() {
@@ -74,6 +69,7 @@ public class Partie {
 				} else if (j.divinite.origine == Origine.aube) {
 					j.PtsActionJour(1);
 				}
+				System.out.println(j);
 			}
 		} else if (valeurDe == 1) {
 			System.out.println("Le de a dit Nuit !");
@@ -85,6 +81,7 @@ public class Partie {
 				} else if (j.divinite.origine == Origine.crepuscule) {
 					j.PtsActionNuit(1);
 				}
+				System.out.println(j);
 			}
 		} else {
 			System.out.println("Le de a dit Neant !");
@@ -96,6 +93,7 @@ public class Partie {
 				} else if (j.divinite.origine == Origine.crepuscule) {
 					j.PtsActionNeant(1);
 				}
+				System.out.println(j);
 			}
 		}
 	}
@@ -210,9 +208,9 @@ public class Partie {
 
 	public void tour() {
 		Joueur joueurDe = this.joueurs.get(0);
-		for (int j = 0; j <= 5; j++) {
+		int j=1;
+		while (this.etatPartie==true) {
 			System.out.println("Tour numero : " + j);
-			// while (this.etatPartie==true) {
 			Joueur joueurJoue = joueurDe;
 			System.out.println(joueurDe.nom + " lance le de !");
 			this.lancerDe();
@@ -234,15 +232,16 @@ public class Partie {
 				}
 			}
 			joueurDe = this.joueurSuivant(joueurDe);
+			j = j + 1;
 		}
-		// }
+		
 	}
 
 	public void jouerTour(Joueur j) {
 		Boolean jouer = false;
 		while (jouer == false) {
 			System.out
-					.println("Que veux-tu faire ? 1 pour completer ta main, 2 pour defausser, 3 pour jouer une carte");
+					.println("Que veux-tu faire ? 1 pour completer ta main, 2 pour defausser, 3 pour jouer une carte, 4 pour sacrifier une carte");
 			Scanner sce = new Scanner(System.in);
 			int choixTour = sce.nextInt();
 			if (choixTour == 1) {
@@ -260,7 +259,7 @@ public class Partie {
 				int nb = scz.nextInt();
 				if (nb > 0 && nb < j.main.size()) {
 					for (int i = 1; i < (nb + 1); i++) {
-						System.out.println("Entrez l'index de la carte a�defausser :");
+						System.out.println("Entrez l'index de la carte a defausser :");
 						Scanner sca = new Scanner(System.in);
 						int choixdefausse = sca.nextInt();
 						j.defaussercarte(j.main.get(choixdefausse));
@@ -283,18 +282,23 @@ public class Partie {
 					}
 				} else if (choix == 3) {
 					if (this.poserApocalypse(j) == true) {
-						;
+						
 						jouer = true;
 					}
 				} else {
 					System.out.println("Pas un type de cartes...");
 				}
 
+			} else if (choixTour == 4) {
+				if (this.activerCapacite(j)== true) {
+					jouer = true ;
+				}
 			}
 		}
 	}
 
-	public void activerCapacite(Joueur j) {
+	public boolean activerCapacite(Joueur j) {
+		boolean activer = false ;
 		System.out.println("Quel type de carte voulez-vous sacrifier ? 1 pour Croyant, 2 pour Guide");
 		Scanner scc = new Scanner(System.in);
 		int type = scc.nextInt();
@@ -306,23 +310,27 @@ public class Partie {
 			if (nb >= 0 && nb <= j.espaceJoueur.size()) {
 				Croyant carte =(Croyant) j.espaceJoueur.get(nb);
 				// CEST ICI QUON LISTE LES CAPACITES CROYANTS
-				if (carte.capacite == "Donne un point d'action d'origine Jour") {
+				if (carte.nom == "Moines") {
 					System.out.println(carte.capacite);
 					j.PtsAction[0] = j.PtsAction[0] + 1;
-					j.defaussercarte(carte);
-				} else if (carte.capacite == "Donne un point d'Action d'Origine Neant") {
+					j.espaceJoueur.remove(carte);
+					activer = true;
+				} else if (carte.nom == "Esprits") {
 					System.out.println(carte.capacite);
 					j.PtsAction[2] = j.PtsAction[2] + 1;
-					j.defaussercarte(carte);
-				} else if (carte.capacite == "Donne un point d'Action d'Origine Nuit.") {
+					j.espaceJoueur.remove(carte);
+					activer = true;
+				} else if (carte.nom == "Demons") {
 					System.out.println(carte.capacite);
 					j.PtsAction[1] = j.PtsAction[1] + 1;
-					j.defaussercarte(carte);
-				} else if (carte.capacite == "Relancez le de de Cosmogonie. Le tour se finit normalement sous la nouvelle influence") {
+					j.espaceJoueur.remove(carte);
+					activer = true;
+				} else if (carte.nom == "Diplomates") {
 					System.out.println(carte.capacite);
 					this.lancerDe();
-					j.defaussercarte(carte);
-				} else if (carte.capacite == "Recuperez les points d'action d'une Divinite. Les point d'action gardent leur Origine. La Divinite perd ses points.") {
+					j.espaceJoueur.remove(carte);
+					activer = true;
+				} else if (carte.nom == "Pillars") {
 					System.out.println(carte.capacite);
 					Scanner scf = new Scanner(System.in);
 					System.out.println("Entrer un nom de Divinite");
@@ -339,7 +347,8 @@ public class Partie {
 							divi.PtsAction[2] = 0 ;
 						}
 					}
-					j.defaussercarte(carte);
+					j.espaceJoueur.remove(carte);
+					activer = true;
 				}
 				else {
 					System.out.println("cette capacite n'est pas encore utilisable");
@@ -355,12 +364,13 @@ public class Partie {
 			if (nb >= 0 && nb <= j.espaceJoueur.size()) {
 				GuideSpirituel carte =(GuideSpirituel) j.espaceJoueur.get(nb);
 				// CEST ICI QUON LISTE LES CAPACITES GUIDES
-				if (carte.capacite == "Equivalent a la pose d'une carte Apocalypse") {
+				if (carte.nom == "Martyr") {
 					System.out.println(carte.capacite);
 					this.doApocalypse();
-					j.defaussercarte(carte);
-					j.defaussercarte(j.espaceJoueur.get(nb +1));
-				} else if (carte.capacite == "Fait gagner un nombre de points d'Action egal au nombre de Croyants rattaches. L'Origine des points d'Action est au choix du joueur.") {
+					j.espaceJoueur.remove(nb+1);
+					j.espaceJoueur.remove(carte);
+					activer = true;
+				} else if (carte.nom == "Clerc") {
 					System.out.println(carte.capacite);
 					System.out.println("Ce guide a " +carte.nbcroyantsRattaches+ " de croyants rattaches");
 					Scanner sc = new Scanner(System.in);
@@ -373,8 +383,9 @@ public class Partie {
 					} else if (face==3) {
 						j.PtsAction[2] = j.PtsAction[2] + carte.nbcroyantsRattaches;
 					}
-					j.defaussercarte(carte);
-					j.defaussercarte(j.espaceJoueur.get(nb +1));
+					j.espaceJoueur.remove(nb+1);
+					j.espaceJoueur.remove(carte);
+					activer = true ;
 					
 				}
 				else {
@@ -384,6 +395,7 @@ public class Partie {
 				System.out.println("Index de carte non valable");
 			}
 		}
+		return activer ;
 	}
 
 	public static void main(String[] args) {
