@@ -6,6 +6,9 @@ public class DeusEx extends Action {
 		type = "deusex";
 	}
 
-	
+	public String toString() {
+		return "DeusEx nom : " +nom+ ", d'origine : " + origine + "\n";
+
+	}
 
 }

@@ -325,7 +325,66 @@ public class Pile {
 		Apocalypse apocalypse5 = new Apocalypse("Boulversement divin", "Apocalypse", Origine.sansOrigine, EtatCarte.pioche);
 		tasDeCartes.add(apocalypse5);
 		
+		
+		// DEUS EX !!!
+		DeusEx deusEx1 = new DeusEx("Detruit une carte Guide Spirituel d'Origine Nuit ou Neant dont la capacite speciale n'a pas effet. Les Croyants attaches reviennent au centre de la table", "Colere Divine", Origine.jour, EtatCarte.pioche);
+		tasDeCartes.add(deusEx1);
+		
+		DeusEx deusEx2 = new DeusEx("Detruit une carte Guide Spirituel d'Origine Jour ou Neant dont la capacite speciale n'a pas effet. Les Croyants attaches reviennent au centre de la table", "Colere Divine", Origine.nuit, EtatCarte.pioche);
+		tasDeCartes.add(deusEx2);
+		
+		DeusEx deusEx3 = new DeusEx("Vous recuperez un des Guide Spirituel pose devant une autre Divinite et le placez devant vous avec les Croyants qui y sont attaches", "Ordre Celeste", Origine.jour, EtatCarte.pioche);
+		tasDeCartes.add(deusEx3);
+		
+		DeusEx deusEx4 = new DeusEx("Sacrifiez 2 cartes Croyants d'une autre Divinite. Les capacites speciales ne sont pas jouees", "Fourberie", Origine.nuit, EtatCarte.pioche);
+		tasDeCartes.add(deusEx4);
+		
+		DeusEx deusEx5 = new DeusEx("Protege un GuideSpirituel et ses Croyants jusqu'a ce que cette carte soit annulee ou jusqu'a la prochaine tentative d'Apocalypse", "Stase", Origine.jour, EtatCarte.pioche);
+		tasDeCartes.add(deusEx5);
+		
+		DeusEx deusEx6 = new DeusEx("Prenez 3 cartes dans la main d'un autre joueur et incluez-les a votre main", "Diversion", Origine.nuit, EtatCarte.pioche);
+		tasDeCartes.add(deusEx6);
+		
+		DeusEx deusEx7 = new DeusEx("Vous recuperez un des Guide Spirituel pose devant une autre Divinite et le placez devant vous avec les Croyants qui y sont attaches", "Concentration", Origine.neant, EtatCarte.pioche);
+		tasDeCartes.add(deusEx7);
+		
+		DeusEx deusEx8 = new DeusEx("Aucune autre joueur ne gagne de points d'Action durant ce tour", "Trou Noir", Origine.neant, EtatCarte.pioche);
+		tasDeCartes.add(deusEx8);
+		
+		DeusEx deusEx9 = new DeusEx("Permet de beneficier de la capacite de l'un de vos Croyants ou Guides Spirituels sans sacrifier la carte", "Phoenix", Origine.neant, EtatCarte.pioche);
+		tasDeCartes.add(deusEx9);
+		
+		DeusEx deusEx10 = new DeusEx("Annule la capacite speciale d'une carte Action d'Origine Nuit ou Neant", "Influence Jour", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx10);
+		
+		DeusEx deusEx11 = new DeusEx("Annule la capacite speciale d'une carte Action d'Origine Jour ou Neant", "Influence Nuit", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx11);
+		
+		DeusEx deusEx12 = new DeusEx("Annule la capacite speciale d'une carte Action d'Origine Jour ou Nuit", "Influence Neant", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx12);
+		
+		DeusEx deusEx13 = new DeusEx("Annule la capacite speciale d'une autre carte Action", "Influence Nulle", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx13);
+		
+		DeusEx deusEx14 = new DeusEx("Annule la capacite speciale d'une autre carte Action", "Influence Nulle", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx14);
+		
+		DeusEx deusEx15 = new DeusEx("Permet de recuperer les effets benefiques d'une carte Action posee par une autre Divinite. S'il s'agit d'une carte Croyants ou Guide Spirituel, vous posez la carte devant vous", "Transe", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx15);
+		
+		DeusEx deusEx16 = new DeusEx("Retourne les effets d'une carte d'Action sur la Divinite qui l'a posee", "Miroir", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx16);
+		
+		DeusEx deusEx17 = new DeusEx("Relancez le de de Cosmogonie. Le tour de jeu se terminera normalement mais sous la nouvelle influence", "Bouleversement", Origine.sansOrigine, EtatCarte.pioche);
+		tasDeCartes.add(deusEx17);
+		
+		DeusEx deusEx18 = new DeusEx("Choisissez un des Guides Spirituels d'un autre joueur, et l'un des votres. Lancez le de de Cosmogonie. Sur Jour, le Guide adverse est sacrifie, sur Nuit le votre est sacrifie, sur Neant rien ne se passe.", "Inquisition", Origine.sansOrigine, EtatCarte.pioche);
+		
+		
+		
+		
 	}
+	
 
 	public void melanger() {
 		Collections.shuffle(tasDeCartes);
